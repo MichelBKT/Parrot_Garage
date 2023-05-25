@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FooterController!{% endblock %}
+
+{% block body %}
+  <footer class="py-3 border-top bg-secondary">
+    <div class="container">
+        <p class="d-flex hours col mb-0 text-success justify-content-center p-3">Nos horaires d'ouverture</p>
+
+        <ul class="col-8 d-flex text-white">
+        <li class="col-2 week-day justify-content-end">Lundi: </br> 08:45-12:00 </br> 14:00-18:00</li>
+        <li class="col-2 week-day">Mardi: </br> 08:45-12:00 </br> 14:00-18:00</li>
+        <li class="col-2 week-day">Mercredi: </br> 08:45-12:00 </br> 14:00-18:00</li>
+        <li class="col-2 week-day">Jeudi: </br> 08:45-12:00 </br> 14:00-18:00</li>
+        <li class="col-2 week-day">Vendredi: </br> 08:45-12:00 </br> 14:00-18:00</li>
+        <li class="col-2 week-day">Samedi: 08:45-12:00</li>
+        <li class="col-4 week-day">Dimanche: fermé</li>
+        </ul>
+    </div>
+  </footer>
+{% endblock %}

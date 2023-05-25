@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HeaderController!{% endblock %}
+
+{% block body %}
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-3" aria-label="Fifth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <img src=" {{ asset('build/images/logo_comp_rect.png') }} " width="153" height="99"alt="logo" class="mx-lg-5">
+
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link mx-lg-3" aria-current="page" href="#">Véhicules</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-3" href="#">Entretiens et services</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle mx-lg-3" href="#" data-bs-toggle="dropdown" aria-expanded="false">Nous contacter</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Par téléphone</a></li>
+                <li><a class="dropdown-item" href="#">Nous écrire</a></li>
+                <li><a class="dropdown-item" href="#">Nous localiser</a></li>
+              </ul>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-3" href="#">Se connecter</a>
+            </li> 
+          </ul>
+        </div>
+      </div>
+  </nav>
+</header>
+
+
+{% endblock %}

@@ -1,3 +1,46 @@
-$primary: rgb(0, 255, 55);
+$primary: #000C66;
+$secondary: #050A30;
+$success: #FFC800;
+$dark: #262526;
+$light: #f2f2f2;
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
+
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.nav-link, .dropdown-item, h1, h2, .hours{
+    font-family: 'Audiowide', cursive;
+}
+body{
+    width: 100vw;
+    background-color: #262526;
+}
+
+#carouselExampleAutoPlaying{
+    width: 50%;
+    margin: auto;
+}
+
+.carousel-item{
+    width: 100%;
+    height: auto;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+.description-welcome{
+    text-align: justify;
+    font-family: 'Hind Madurai', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.address p, .phone-number, .services, ul li{
+    font-family: 'Hind Madurai', sans-serif;
+    font-weight: bold;
+}
+ul li {
+    list-style: none;
+}
