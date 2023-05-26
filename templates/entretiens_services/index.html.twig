@@ -4,134 +4,51 @@
 
 {% block body %}
 
-    <body class="bg-primary">
-   {{include("header.html.twig")}}
+{% include "header.html.twig" %}
 
+<div class="bg-primary">
+   
+    <div class="container-fluid">
         <section class="row justify-content-center">
-            <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Entretiens et services</h1>
+            <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">{{block ('title')}}</h1>
             <img src="{{ asset('build/images/mécanique-auto.jpg')}}" class="col-10 w-75 mb-5" alt="photo_atelier">
         </section>
         <section class="entretiens row">
             <h2 class="col-6 bg-success shadow-lg rounded my-5">Entretiens</h2>
             <div class="entretiens-presentation row justify-content-center">
-                <p class="entretiens-text lg-col-6 p-3 bg-dark text-white text-justify shadow-lg rounded">Confier régulièrement votre véhicule à votre concessionnaire Parrot pour l'entretien et les révisions vous permet de le conserver dans un état optimal. L'entretien permet de 
+                <p class="entretiens-text lg-col-6 p-3 bg-dark text-white shadow-lg rounded">Confier régulièrement votre véhicule à votre concessionnaire Parrot pour l'entretien et les révisions vous permet de le conserver dans un état optimal. L'entretien permet de 
                 garantir les performances de votre moteur, d'améliorer la consommation de carburant et de réduire les émissions de CO2. Outre réaliser des économies, il vous permet de rester
                 serein, confiant dans la sécurité et la fiabilité de votre automobile.</br>Vous bénéficierez de l'expertise de techniciens qualifiés, de pièces d'origine.</br><strong>Nous recommandons une révision annuelle
                 ou tous les 30 000 km.</strong></br>
                 Votre réparateur Parrot agréé contrôle les éléments suivants :</p>
-                <ul class="entretiens-list lg-col-8 row row-cols-2 p-3 bg-dark text-white text-justify shadow-lg rounded">
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Remplacement de l'huile moteur</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Remplacement des filtres</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Contrôle de la batterie</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Inspections générales (pneus, pot d'échappement, carrosserie...)</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Inspection technique freins, moteur, châssis</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Inspection technique éclairage et électronique</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Remplacement du liquide de freins</li>
+                <ul class="entretiens-list lg-col-8 row row-cols-2 p-3 bg-dark text-white shadow-lg rounded">
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Remplacement de l'huile moteur</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Remplacement des filtres</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Contrôle de la batterie</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Inspections générales (pneus, pot d'échappement, carrosserie...)</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Inspection technique freins, moteur, châssis</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Inspection technique éclairage et électronique</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Remplacement du liquide de freins</li>
                 </ul>
             </div>
         </section>
         <section class="services row">
             <h2 class="col-6 bg-success shadow-lg rounded my-5">Services</h2>
             <div class="services-presentation row justify-content-center">
-                <p class="services-text col p-3 bg-dark text-white text-justify shadow-lg rounded">Parrot Automobiles peut vous prêter un véhicule de courtoisie en cas d'immobilisation de plus d'une journée.
+                <p class="services-text col p-3 bg-dark text-white shadow-lg rounded">Parrot Automobiles peut vous prêter un véhicule de courtoisie en cas d'immobilisation de plus d'une journée.
                     Tous types de réparations peuvent être effectuées multi-marques.</br> Voici une liste non exhaustive des prestations :</p>
-                <ul class="services-list lg-col-8 row row-cols-2 p-3 mb-5 bg-dark text-white text-justify shadow-lg rounded">
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Courroie de distribution</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Courroie d'alternateur</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Embrayage</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Vanne EGR</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Remplacement des pneumatiques</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Régénération du FAP</li>
-                    <li class="col-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg> Et bien plus...</li>
+                <ul class="services-list lg-col-8 row row-cols-2 p-3 mb-5 bg-dark text-white shadow-lg rounded">
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Courroie de distribution</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Courroie d'alternateur</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Embrayage</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Vanne EGR</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Remplacement des pneumatiques</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Régénération du FAP</li>
+                    <li class="col-4">{{ block ("bichevronright", "common_block.html.twig")}} Et bien plus...</li>
                 </ul>
             </div>
         </section>
-    </body>
-
-   {{ include("footer.html.twig") }}
-
+    </div>
+</div>
+{% include "footer.html.twig" %}
 {% endblock %}

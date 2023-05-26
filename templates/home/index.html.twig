@@ -3,9 +3,8 @@
 {% block title %}Garage Parrot, Bienvenue!{% endblock %}
 
 {% block body %}
-
-    <body class="bg-primary">
-    {{include("header.html.twig")}}
+    {% include "header.html.twig" %}
+<div class="bg-primary">
 
     <div id="carouselExampleAutoPlaying" class="carousel slide mb-5" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -106,40 +105,19 @@
         </section>
         <section class="row justify-content-center">
             <h1 class="col-12 mt-3 p-3 bg-success shadow-lg rounded mb-5">Nos services</h1>
-            <img src="{{ asset('build/images/mécanique-auto.jpg')}}" class="col-10 w-75 mb-5" alt="photo_atelier">
-            <p class="services col-10 p-3 bg-dark text-white text-center shadow-lg rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg> VEHICULES D'OCCASIONS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg></br></br>Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. Consultez nos annonces en ligne.</br></br><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg> RENDEZ-VOUS ATELIER <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4af706" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                </svg></br></br> Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien ou de devis.
+            <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid col-10 w-25 mb-5" alt="illustration_services">
+            <p class="services col-10 p-3 bg-dark text-white text-center shadow-lg rounded">
+                {{ block ("bichevronright", "common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "common_block.html.twig")}} </br></br>
+                Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. Consultez nos annonces en ligne.</br></br>
+                {{ block ("bichevronright", "common_block.html.twig")}} RENDEZ-VOUS ATELIER {{ block ("bichevronleft", "common_block.html.twig")}}</br></br>
+                Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien ou de devis.
             </p>
-
         </section>
         <section class="customers-comments row">
-            <h2 class="col-6 bg-success shadow-lg rounded mx-3 mt-5">Avis clients</h2>
+            <h2 class="col-6 bg-success shadow-lg rounded my-3 mt-5">Avis clients</h2>
                 <p>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</p>
         </section>
     </div>
-    </body>
-    {{ include("footer.html.twig") }}
+</div>
+{% include "footer.html.twig" %}
 {% endblock %}

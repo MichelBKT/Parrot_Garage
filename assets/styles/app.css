@@ -10796,10 +10796,10 @@ h1, .h1, h2, .h2 {
   text-align: center;
 }
 
-.description-welcome {
+.description-welcome, .entretiens-text, .services-text {
   text-align: justify;
   font-family: "Hind Madurai", sans-serif;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 700;
 }
 
@@ -10810,4 +10810,5 @@ h1, .h1, h2, .h2 {
 
 ul li {
   list-style: none;
+  font-size: 0.9em;
 }/*# sourceMappingURL=app.css.map */
