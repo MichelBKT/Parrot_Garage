@@ -10769,7 +10769,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.nav-link, .dropdown-item, h1, .h1, h2, .h2, .hours {
+.nav-link, .dropdown-item, h1, .h1, h2, .h2, .carousel-caption, .hours {
   font-family: "Audiowide", cursive;
 }
 
@@ -10786,6 +10786,10 @@ body {
 .carousel-item {
   width: 100%;
   height: auto;
+}
+
+.carousel-caption h2, .carousel-caption .h2 {
+  color: red;
 }
 
 h1, .h1, h2, .h2 {
