@@ -1,14 +1,14 @@
 $primary: #000C66;
 $secondary: #050A30;
 $success: #FFC800;
-$dark: #262526;
+$dark: #000000;
 $light: #f2f2f2;
 $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 
-.nav-link, .dropdown-item, h1, h2, .carousel-caption, .hours{
+h1, h2, .carousel-caption, .hours{
     font-family: 'Audiowide', cursive;
 }
 body{
@@ -34,7 +34,7 @@ h1, h2{
     text-align: center;
 }
 
-.description-welcome, .entretiens-text, .services-text{
+.nav-link, .dropdown-item, .description-welcome, .entretiens-text, .services-text{
     text-align: justify;
     font-family: 'Hind Madurai', sans-serif;
     font-size: 1em;
