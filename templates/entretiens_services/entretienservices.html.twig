@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="bg-primary">
+<div class="bg-secondary">
    
     <div class="container-fluid">
         <section class="row justify-content-center">
@@ -20,13 +20,9 @@
                 ou tous les 30 000 km.</strong></br>
                 Votre réparateur Parrot agréé contrôle les éléments suivants :</p>
                 <ul class="entretiens-list lg-col-8 row row-cols-2 p-3 bg-dark text-white shadow-lg rounded">
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Remplacement de l'huile moteur</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Remplacement des filtres</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Contrôle de la batterie</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Inspections générales (pneus, pot d'échappement, carrosserie...)</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Inspection technique freins, moteur, châssis</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Inspection technique éclairage et électronique</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Remplacement du liquide de freins</li>
+                    {% for entretien in entretiens %}
+                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} {{ entretien.libelle }}</li>  
+                    {% endfor %}
                 </ul>
             </div>
         </section>
@@ -36,13 +32,10 @@
                 <p class="services-text col p-3 bg-dark text-white shadow-lg rounded">Parrot Automobiles peut vous prêter un véhicule de courtoisie en cas d'immobilisation de plus d'une journée.
                     Tous types de réparations peuvent être effectuées multi-marques.</br> Voici une liste non exhaustive des prestations :</p>
                 <ul class="services-list lg-col-8 row row-cols-2 p-3 mb-5 bg-dark text-white shadow-lg rounded">
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Courroie de distribution</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Courroie d'alternateur</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Embrayage</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Vanne EGR</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Remplacement des pneumatiques</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Régénération du FAP</li>
-                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} Et bien plus...</li>
+                    {% for service in services %}
+                    <li class="col-4">{{ block ("bichevronright", "config/common_block.html.twig")}} {{ service.libelle }}</li>
+                    {% endfor %}
+
                 </ul>
             </div>
         </section>

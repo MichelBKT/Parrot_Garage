@@ -47,10 +47,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis_Client::class)]
     private Collection $id_user;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: entretien::class)]
+    private Collection $entretien;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: service::class)]
+    private Collection $service;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->id_user = new ArrayCollection();
+        $this->entretien = new ArrayCollection();
+        $this->service = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -225,6 +233,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($idUser->getUser() === $this) {
                 $idUser->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, entretien>
+     */
+    public function getEntretien(): Collection
+    {
+        return $this->entretien;
+    }
+
+    public function addEntretien(entretien $entretien): self
+    {
+        if (!$this->entretien->contains($entretien)) {
+            $this->entretien->add($entretien);
+            $entretien->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntretien(entretien $entretien): self
+    {
+        if ($this->entretien->removeElement($entretien)) {
+            // set the owning side to null (unless already changed)
+            if ($entretien->getUser() === $this) {
+                $entretien->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, service>
+     */
+    public function getService(): Collection
+    {
+        return $this->service;
+    }
+
+    public function addService(service $service): self
+    {
+        if (!$this->service->contains($service)) {
+            $this->service->add($service);
+            $service->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(service $service): self
+    {
+        if ($this->service->removeElement($service)) {
+            // set the owning side to null (unless already changed)
+            if ($service->getUser() === $this) {
+                $service->setUser(null);
             }
         }
 

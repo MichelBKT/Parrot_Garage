@@ -3,44 +3,29 @@
 {% block title %}Garage Parrot, Bienvenue!{% endblock %}
 
 {% block body %}
-<div class="bg-primary">
-
+<body class="bg-secondary">
+    <h1 class="col-12 my-5 p-3 bg-dark text-success shadow-lg rounded">Nos derniers arrivages véhicules d'occasion</h1>
     <div id="carouselExampleAutoPlaying" class="carousel slide mb-5" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('build/images/opel_astra.jpg')}}" class="d-block w-100" alt="pub_opel_astra">
-      <div class="carousel-caption d-none d-md-block">
-        <h2>EN EXCLUSIVITE CHEZ GARAGE PARROT</br></br></h2>
-        <h2>OPEL ASTRA 2019 15000€</h2>
-        <p>Retrouvez la parmis nos annonces de véhicule d'occasion</p>
-      </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('build/images/opel_astra.png')}}" class="w-100" alt="pub_opel_astra">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('build/images/alfa_giulia.png')}}" class="w-100" alt="pub_alfa_romeo_giulia">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('build/images/opel_corsa.png')}}" class="w-100" alt="pub_opel_corsa">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-item">
-      <img src="{{ asset('build/images/alfa_giulia.jpg')}}" class="d-block w-100" alt="pub_alfa_romeo_giulia">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>EN EXCLUSIVITE CHEZ GARAGE PARROT</br></br></h5>
-        <h2>ALFA ROMEO GIULIA 2020 19000€</h2>
-        <p>Retrouvez la parmis nos annonces de véhicule d'occasion</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('build/images/opel_corsa.jpg')}}" class="d-block w-100" alt="pub_opel_corsa">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>EN EXCLUSIVITE CHEZ GARAGE PARROT</br></br></h5>
-        <h2>OPEL CORSA 2009 4790€</h2>
-        <p>Retrouvez la parmis nos annonces de véhicule d'occasion</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
     <section class="row justify-content-center">
 
@@ -103,7 +88,7 @@
             </div>
         </section>
         <section class="row justify-content-center">
-            <h1 class="col-12 mt-3 p-3 bg-success shadow-lg rounded mb-5">Nos services</h1>
+            <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Nos services</h1>
             <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid col-10 w-25 mb-5" alt="illustration_services">
             <p class="services col-10 p-3 bg-dark text-white text-center shadow-lg rounded">
                 {{ block ("bichevronright", "config/common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "config/common_block.html.twig")}} </br></br>
@@ -112,15 +97,39 @@
                 Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien ou de devis.
             </p>
         </section>
-        <section class="customers-comments row">
-            <h2 class="col-6 bg-success shadow-lg rounded my-3 mt-5">Avis clients</h2>
-                <p>||</br>
-                {{ dump() }}|
+        <section class="container-fluid">
+            <div class="customers-comments row justify-content-center mb-5">
+                <h2 class="col-6  bg-success shadow-lg rounded my-5 mt-5 ">Avis clients</h2>
                 {% for avisClient in avisClients %}
                     
-                <div class="col-6 bg-dark text-white shadow-lg rounded">Posté par : {{ avisClient.auteur }} </div>
-                {% endfor %}
+                <div class="col-8 bg-dark text-white shadow-lg rounded">Avis posté par : {{ avisClient.auteur }} 
+                    {% if avisClient.note == 5 %} 
+                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
+                        {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
+                        </div>
+                    {% endif %}
+                    {% if avisClient.note == 4 %}
+                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
+                        {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
+                        </div>
+                    {% endif %}
+                    {% if avisClient.note == 3 %}
+                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
+                        {{ block ("starFill","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
+                    {% endif %}
+                    {% if avisClient.note == 2 %}
+                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
+                        {{ block ("star","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
+                    {% endif %}
+                    {% if avisClient.note == 1 %}
+                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("star","config/common_block.html.twig") }}
+                        {{ block ("star","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
+                    {% endif %}
+                        <div class="col-8 text-white fst-italic"> {{ avisClient.libelle }}</div></br>    
+                </div>
+                    {% endfor %}
+            </div>
         </section>
     </div>
-</div>
+</body>
 {% endblock %}
