@@ -34,7 +34,7 @@ class Voiture
     #[ORM\Column(length: 255)]
     private ?string $photos = null;
 
-    #[ORM\ManyToOne(inversedBy: 'couleur')]
+    #[ORM\ManyToOne(inversedBy: 'Couleur')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Couleur $couleur = null;
 

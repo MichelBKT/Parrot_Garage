@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AvisClientRepository::class)]
-class AvisClient
+class Avis_Client
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,7 +23,7 @@ class AvisClient
     #[ORM\Column(length: 50)]
     private ?string $auteur = null;
 
-    #[ORM\ManyToOne(inversedBy: 'id_user')]
+    #[ORM\ManyToOne(inversedBy: 'User_id')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

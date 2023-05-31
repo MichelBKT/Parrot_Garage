@@ -18,7 +18,7 @@ class Poste
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_Poste', targetEntity: user::class)]
+    #[ORM\OneToMany(mappedBy: 'Poste_id', targetEntity: User::class)]
     private Collection $poste;
 
     public function __construct()
@@ -51,22 +51,22 @@ class Poste
         return $this->poste;
     }
 
-    public function addPoste(user $poste): self
+    public function addPoste(User $poste): self
     {
         if (!$this->poste->contains($poste)) {
             $this->poste->add($poste);
-            $poste->setIdPoste($this);
+            $poste->setposte($this);
         }
 
         return $this;
     }
 
-    public function removePoste(user $poste): self
+    public function removePoste(User $poste): self
     {
         if ($this->poste->removeElement($poste)) {
             // set the owning side to null (unless already changed)
-            if ($poste->getIdPoste() === $this) {
-                $poste->setIdPoste(null);
+            if ($poste->getPoste() === $this) {
+                $poste->setPoste(null);
             }
         }
 

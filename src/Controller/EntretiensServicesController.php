@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\HoraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class EntretiensServicesController extends AbstractController
 {
     #[Route('/entretiens/services', name: 'app_entretiens_services')]
-    public function index(): Response
+
+    public function showOpenHours(HoraireRepository $horaireRepository): Response
     {
-        return $this->render('entretiens_services/index.html.twig', [
-            'controller_name' => 'EntretiensServicesController',
+        return $this->render('entretiens_services/entretienservices.html.twig', [
+            'horaires' => $horaireRepository->findAll()
         ]);
     }
 }

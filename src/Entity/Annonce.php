@@ -22,13 +22,13 @@ class Annonce
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\ManyToOne(inversedBy: 'User')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?voiture $voiture = null;
+    private ?Voiture $voiture = null;
 
     public function getId(): ?int
     {

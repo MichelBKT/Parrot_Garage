@@ -16,7 +16,7 @@ class VoitureCaracteristique
     #[ORM\Id]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?caracteristique $caracteristique = null;
+    private ?Caracteristique $caracteristique = null;
 
     public function getVoiture(): ?voiture
     {

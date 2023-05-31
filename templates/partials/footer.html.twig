@@ -1,13 +1,11 @@
-{% extends 'base.html.twig' %}
-
 {% block body %}
   <footer class="container-fluid border-top bg-secondary">
     <div class="row d-flex justify-content-center">
         <p class="d-flex justify-content-center hours col-12 mb-0 text-success p-3">Nos horaires d'ouverture</p>
         <ul class="row d-flex justify-content-center text-white">
-          <li class="d-flex justify-content-center col-12 week-day">Lundi au vendredi: </br> 08:45-12:00 </br> 14:00-18:00</li>
-          <li class="d-flex justify-content-center col-12 week-end">Samedi: 08:45-12:00</li>
-          <li class="d-flex justify-content-center col-12 week-end">Dimanche: fermé</li>
+          {% for horaire in horaires %}
+          <li class="d-flex justify-content-center col-12"> {{ horaire.jourSemaine }}: {{ horaire.plageHoraire }}</li>
+          {% endfor %}
         </ul>
     </div>
   </footer>

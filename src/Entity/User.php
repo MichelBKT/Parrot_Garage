@@ -38,13 +38,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $role_admin = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?poste $poste = null;
+    #[ORM\ManyToOne(inversedBy: 'User')]
+    private ?Poste $poste = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: annonce::class)]
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Annonce::class)]
     private Collection $user;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: avisClient::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis_Client::class)]
     private Collection $id_user;
 
     public function __construct()
@@ -209,7 +209,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id_user;
     }
 
-    public function addIdUser(avisClient $idUser): self
+    public function addIdUser(avis_Client $idUser): self
     {
         if (!$this->id_user->contains($idUser)) {
             $this->id_user->add($idUser);
@@ -219,7 +219,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeIdUser(avisClient $idUser): self
+    public function removeIdUser(avis_Client $idUser): self
     {
         if ($this->id_user->removeElement($idUser)) {
             // set the owning side to null (unless already changed)

@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\AvisClient;
+use App\Entity\Avis_Client;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,10 +18,10 @@ class AvisClientRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AvisClient::class);
+        parent::__construct($registry, Avis_Client::class);
     }
 
-    public function save(AvisClient $entity, bool $flush = false): void
+    public function save(Avis_Client $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AvisClientRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(AvisClient $entity, bool $flush = false): void
+    public function remove(Avis_Client $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 

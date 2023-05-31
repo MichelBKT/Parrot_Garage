@@ -11,7 +11,7 @@ class HeaderController extends AbstractController
     #[Route('/header', name: 'app_header')]
     public function index(): Response
     {
-        return $this->render('header/index.html.twig', [
+        return $this->render('partials/header.html.twig', [
             'controller_name' => 'HeaderController',
         ]);
     }

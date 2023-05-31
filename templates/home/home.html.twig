@@ -3,7 +3,6 @@
 {% block title %}Garage Parrot, Bienvenue!{% endblock %}
 
 {% block body %}
-    {% include "header.html.twig" %}
 <div class="bg-primary">
 
     <div id="carouselExampleAutoPlaying" class="carousel slide mb-5" data-bs-ride="carousel">
@@ -107,17 +106,21 @@
             <h1 class="col-12 mt-3 p-3 bg-success shadow-lg rounded mb-5">Nos services</h1>
             <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid col-10 w-25 mb-5" alt="illustration_services">
             <p class="services col-10 p-3 bg-dark text-white text-center shadow-lg rounded">
-                {{ block ("bichevronright", "common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "common_block.html.twig")}} </br></br>
+                {{ block ("bichevronright", "config/common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "config/common_block.html.twig")}} </br></br>
                 Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. Consultez nos annonces en ligne.</br></br>
-                {{ block ("bichevronright", "common_block.html.twig")}} RENDEZ-VOUS ATELIER {{ block ("bichevronleft", "common_block.html.twig")}}</br></br>
+                {{ block ("bichevronright", "config/common_block.html.twig")}} RENDEZ-VOUS ATELIER {{ block ("bichevronleft", "config/common_block.html.twig")}}</br></br>
                 Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien ou de devis.
             </p>
         </section>
         <section class="customers-comments row">
             <h2 class="col-6 bg-success shadow-lg rounded my-3 mt-5">Avis clients</h2>
-                <p>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</br>||</p>
+                <p>||</br>
+                {{ dump() }}|
+                {% for avisClient in avisClients %}
+                    
+                <div class="col-6 bg-dark text-white shadow-lg rounded">Posté par : {{ avisClient.auteur }} </div>
+                {% endfor %}
         </section>
     </div>
 </div>
-{% include "footer.html.twig" %}
 {% endblock %}
