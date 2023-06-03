@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\VoitureRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,12 +29,15 @@ class Voiture
     #[ORM\Column]
     private ?bool $ct_ok = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $photos = null;
-
-    #[ORM\ManyToOne(inversedBy: 'Couleur')]
+     #[ORM\ManyToOne(inversedBy: 'Couleur')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Couleur $couleur = null;
+
+     #[ORM\Column(type: Types::BLOB)]
+     private $photo = null;
+
+     #[ORM\Column]
+     private ?int $km = null;
 
     public function getId(): ?int
     {
@@ -102,19 +103,6 @@ class Voiture
 
         return $this;
     }
-
-    public function getPhotos(): ?string
-    {
-        return $this->photos;
-    }
-
-    public function setPhotos(string $photos): self
-    {
-        $this->photos = $photos;
-
-        return $this;
-    }
-
     public function getCouleur(): ?Couleur
     {
         return $this->couleur;
@@ -126,4 +114,42 @@ class Voiture
 
         return $this;
     }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getKm(): ?int
+    {
+        return $this->km;
+    }
+
+    public function setKm(int $km): self
+    {
+        $this->km = $km;
+
+        return $this;
+    }
+    /**
+     * @ORM\Column(name="photo", type="blob", nullable=true)
+     */
+    private $rawPhoto;
+
+    public function displayPhoto()
+    {
+        if(null === $this->rawPhoto) {
+            $this->rawPhoto = "data:image/jpg;base64," . base64_encode(stream_get_contents($this->getPhoto()));
+    }
+    return $this->rawPhoto;
+}
+
+
 }

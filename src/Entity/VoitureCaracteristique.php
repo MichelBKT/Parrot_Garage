@@ -11,19 +11,19 @@ class VoitureCaracteristique
     #[ORM\Id]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?voiture $voiture = null;
+    private ?Voiture $voiture = null;
     
     #[ORM\Id]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Caracteristique $caracteristique = null;
 
-    public function getVoiture(): ?voiture
+    public function getVoiture(): ?Voiture
     {
         return $this->voiture;
     }
 
-    public function setVoiture(?voiture $voiture): self
+    public function setVoiture(?Voiture $voiture): self
     {
         $this->voiture = $voiture;
 

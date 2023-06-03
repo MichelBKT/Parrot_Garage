@@ -47,10 +47,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis_Client::class)]
     private Collection $id_user;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: entretien::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Entretien::class)]
     private Collection $entretien;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: service::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Service::class)]
     private Collection $service;
 
     public function __construct()
