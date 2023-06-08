@@ -93,5 +93,5 @@ class Annonce
         $this->voiture = $voiture;
 
         return $this;
-    }
+    } 
 }

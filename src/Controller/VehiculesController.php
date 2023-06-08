@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Annonce;
+use App\Entity\Caracteristique;
 use App\Repository\AnnonceRepository;
+use App\Repository\CouleurRepository;
 use App\Repository\HoraireRepository;
 use App\Repository\VoitureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
 
 class VehiculesController extends AbstractController
 {
@@ -20,15 +24,21 @@ class VehiculesController extends AbstractController
             'annonces' => $annonceRepository->findAll(),
             'voitures' => $voitureRepository->findAll(),
         ]);
+
     }
 
     #[Route('/vehicules/details/{id}', name: 'app_vehicules_details', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function showDetails(Annonce $annonce, HoraireRepository $horaire): Response
+    public function showDetails(Annonce $annonce, HoraireRepository $horaireRepository, VoitureRepository $voitureRepository,CouleurRepository $couleurRepository, 
+    Caracteristique $caracteristique , AnnonceRepository $annonceRepository): Response
     {
-                return $this->render('vehicules/vehicules_details.html.twig', [
-                'horaires' => $horaire->findAll(),
-                'annonce' => $annonce,
-            ]);
+        
+        return $this->render('vehicules/vehicules_details.html.twig', [
+            'horaires' => $horaireRepository->findAll(),
+            'annonce' => $annonce,
+            'voiture' => $voitureRepository->findAll(),
+            'couleur' => $couleurRepository->findAll(), 
+            'caracteristique' => $caracteristique,
             
+        ]); 
     }
- }
+}
