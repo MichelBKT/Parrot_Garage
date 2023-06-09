@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte - Garage Parrot{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+    {% include "partials/adminNav.html.twig" %}
+            <main class="col-lg-8 rounded p-2">
+                <h2 class="text-success p-3">Bienvenue sur votre espace personnel</br>{{app.user.prenom}} {{app.user.nom}}, {{app.user.poste.libelle}}</h2>
+                <img src="{{asset('build/images/logo_simple.png')}}" alt="logo" class="img-thumbnail col-4 me-auto p-2">
+                <p class="bg-light rounded p-3 m-5"> Les différentes cartes placées sur la gauche vous permettront d'administrer le site web.</br> Vous bénéficiez de tous les droits
+                pour modifier directement les informations affichées sur le site.</br> Vous avez le choix entre 5 catégories administrables.</br> Pour rappel, seules les 
+                2 dernières catégories (Annonces et Avis clients) ne sont visibles par les employés.</br> Pour chaque item, vous pouvez consulter les données enregistrées
+                dans le système. Cliquer sur "gérer..." vous permettra d'ajouter, modifier ou supprimer un élément de la catégorie. </br> Laissez-vous guider!</p>
+                <img src="{{asset('build/images/logo_simple.png')}}" alt="logo" class="img-thumbnail col-4 me-auto p-2">
+
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

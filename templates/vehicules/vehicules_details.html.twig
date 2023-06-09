@@ -26,11 +26,11 @@
                             <td>{{ annonce.voiture.annee | date('d/m/Y') }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Energie</td>
+                            <th scope="row">Energie</th>
                             <td>{{annonce.voiture.energie}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Contrôle technique</td>
+                            <th scope="row">Contrôle technique</th>
                             <td>{% if annonce.voiture.CtOk == 1 %} OK
                             {% else %}
                                 A passer
@@ -38,15 +38,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Couleur</td>
+                            <th scope="row">Couleur</th>
                             <td>{{annonce.voiture.couleur.libelle}}</td>
                         </tr>
                         <tr>
-                            <td class='col-4'>Kilométrage</td>
+                            <th class='col-4'>Kilométrage</th>
                             <td>{{annonce.voiture.km}}</td>
                         </tr>
                         <tr>
-                            <td class='col-4'>Boite de vitesse</td>
+                            <th class='col-4'>Boite de vitesse</th>
                             <td>{% if caracteristique.BoiteVitesseManuelle == 1 %} Manuelle
                             {% else %}
                                 Automatique
@@ -54,25 +54,25 @@
                             </td>
                         </tr>
                         <tr> 
-                            <td class='col-4'> Nombre de portes</td>
+                            <th class='col-4'> Nombre de portes</th>
                             <td>{% if caracteristique.nbPortes5 == 1 %} 5 
                             {% else %}3{% endif %}
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Puissance fiscale</td>
+                            <th scope="row">Puissance fiscale</th>
                             <td>{{caracteristique.puissanceFisc}} cv</td>
                         </tr>
                         <tr>
-                            <th scope="row">Puissance din</td>
+                            <th scope="row">Puissance din</th>
                             <td>{{caracteristique.puissanceDin}} ch</td>
                         </tr>
                         <tr>
-                            <th scope="row">Emission de Co2</td>
+                            <th scope="row">Emission de Co2</th>
                             <td>{{caracteristique.CO2}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Prix</td>
+                            <th scope="row">Prix</th>
                             <td>{{annonce.prix}} € TTC</td>
                         </tr>
                     </tbody>
