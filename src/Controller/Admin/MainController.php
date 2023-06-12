@@ -16,4 +16,11 @@ class MainController extends AbstractController
             'horaires' => $horaireRepository -> findAll(),
         ]);
     }
+    #[Route('/admin/openHours', name: 'admin_openHours')]
+    public function showOpenHours(HoraireRepository $horaireRepository): Response
+    {
+        return $this->render('Admin/openHours.html.twig', [
+            'horaires' => $horaireRepository -> findAll(),
+        ]);
+    }
 }

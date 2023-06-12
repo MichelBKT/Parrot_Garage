@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout utilisateur - Garage Parrot{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+    {% include "partials/adminNav.html.twig" %}
+            <main class="col-lg-8 rounded p-2">
+                <h2 class="text-success p-3">Ajouter un utilisateur</h2>
+                <div class="text-white">
+
+                    {{ form_start(formView) }}
+
+                        {{ form_row(formView.nom) }}
+                        {{ form_row(formView.prenom) }}
+                        {{ form_row(formView.email) }}
+                        {{ form_row(formView.password) }}
+                        {{ form_row(formView.poste) }}
+                        <button type="submit" class="btn btn-success">Valider</button>
+
+                    {{ form_end(formView) }}
+                </div>
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

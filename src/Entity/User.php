@@ -35,9 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\Column]
-    private ?bool $role_admin = null;
-
     #[ORM\ManyToOne(inversedBy: 'User')]
     private ?Poste $poste = null;
 
@@ -151,18 +148,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function isRoleAdmin(): ?bool
-    {
-        return $this->role_admin;
-    }
-
-    public function setRoleAdmin(bool $role_admin): self
-    {
-        $this->role_admin = $role_admin;
 
         return $this;
     }

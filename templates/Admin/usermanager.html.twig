@@ -8,32 +8,32 @@
         <div class="row justify-content-center">
     {% include "partials/adminNav.html.twig" %}
             <main class="col-lg-8 rounded p-2">
-                <h2 class="text-success p-3">Liste des utilisateurs</h2>
-                <a href="#" class="btn btn-light">Ajouter un utilisateur</a>
-                 <div class="table-responsive-md">
-                <table class="table table-bordered table-striped table-dark text-white">
+                <h2 class="text-success p-3 border-bottom">Gestion des utilisateurs</h2>
+                <a href="{{path('app_user_add')}}" class="btn btn-light mb-3 mt-3">Ajouter un utilisateur</a>
+                 <div class="table-responsive-md mt-2">
+                <table class="table table-bordered table-striped table-dark text-white text-center">
                     <thead>
                         <tr>
                             <th scope="col">Identifiant</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Prénom</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">E-mail</th>
                             <th scope="col">Poste</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" colspan="2" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
                         {% for user in users %}
-                            <td>{{ app.user.id }}</td>
-                            <td>{{ app.user.nom }}</td>
-                            <td>{{ app.user.prenom }}</td>
-                            <td>{{ app.user.email }}</td>
-                            <td>{{ app.user.poste.libelle }}</td>
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.nom }}</td>
+                            <td>{{ user.prenom }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.poste.libelle }}</td>
                             <td><a href="#" class="btn btn-success">Modifier</a></td>
                             <td><a href="#" class="btn btn-danger">Supprimer</a></td>
-                        {% endfor %}
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </main>    
