@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Repository\HoraireRepository;
@@ -46,5 +46,6 @@ class UserManagerController extends AbstractController
             'formView' => $form->createView(),
         ]);
     }
+    
 
 }

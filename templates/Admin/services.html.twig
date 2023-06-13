@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des services{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+    {% include "partials/adminNav.html.twig" %}
+            <main class="col-lg-8 rounded p-2">
+                <h2 class="text-success p-3 border-bottom">Liste des services</h2>
+                 <div class="table-responsive-md mt-5">
+                <table class="table table-bordered table-striped table-dark text-white mb-5">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2" class="text-center">Services</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                         <tr> 
+                            <td>{{service.id}}</td>  
+                            <td>{{service.libelle}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-striped table-dark text-white">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2" class="text-center">Entretien</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entretien in entretiens %}
+                        <tr>
+                            <td>{{entretien.id - 2 }}</td>
+                            <td>{{entretien.libelle}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

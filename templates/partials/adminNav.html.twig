@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <p><a href="{{path('admin_openHours')}}"> Voir les horaires d'ouverture<p></a>
-            <p><a href="#"> Gérer les horaires d'ouverture<p></a>
+            <p><a href="{{path('admin_modifyOpenHours')}}"> Gérer les horaires d'ouverture<p></a>
         </div>
     </article>
     <article class="card mb-3">
@@ -22,8 +22,8 @@
             Services       
         </div>
         <div class="card-body">
-            <p><a href="#"> Liste des services<p></a>
-            <p><a href="#"> Gérer les services<p></a>
+            <p><a href="{{path('admin_services')}}"> Liste des services<p></a>
+            <p><a href="{{path('app_service_manager')}}"> Gérer les services<p></a>
         </div>
     </article>
         <article class="card mb-3">
@@ -31,7 +31,7 @@
             Annonces       
         </div>
         <div class="card-body">
-            <p><a href="#"> Liste des annonces<p></a>
+            <p><a href="{{path('user_ad')}}"> Liste des annonces<p></a>
             <p><a href="#"> Gérer les annonces<p></a>
         </div>
     </article>
@@ -40,7 +40,7 @@
             Avis clients       
         </div>
         <div class="card-body">
-            <p><a href="#"> Liste des avis clients<p></a>
+            <p><a href="{{path('user_comments')}}"> Liste des avis clients<p></a>
             <p><a href="#"> Gérer les avis clients<p></a>
         </div>
     </article>
