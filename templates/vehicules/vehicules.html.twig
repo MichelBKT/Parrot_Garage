@@ -10,7 +10,7 @@
             <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Nos véhicules d'occasion</h1>
             {% for annonce in annonces %} 
               <div class="card bg-dark text-white mb-5 mx-5" style="width: 18rem;">
-                    <img src="{{ annonce.voiture.displayPhoto }}" class="card-img-top h-100" alt="...">
+                    <img src="{{ asset('assets/uploads/voiture/') ~ annonce.voiture.photo}}" class="card-img-top h-100" alt="...">
                     <div class="card-body">
                         <h5 class="card-title text-success fw-semibold">{{ annonce.titre }}</h5>
                         <p class="card-text">Année : {{ annonce.voiture.annee|date('Y') }} </br> Energie : {{ annonce.voiture.energie }} </br> Kilométrage : {{ annonce.voiture.km }}</p>

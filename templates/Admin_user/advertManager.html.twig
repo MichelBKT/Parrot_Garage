@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des annonces{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if is_granted('ROLE_ADMIN') %}
+            {% include "partials/adminNav.html.twig" %}
+            {% else %}
+            {% include "partials/userNav.html.twig" %}    
+            {% endif %}
+            <main class="col-lg-8 rounded p-2">
+                <h2 class="text-success p-3 border-bottom">Gestion des annonces</h2>
+                <a href="{{path('user_car_new')}}" class="btn btn-light mb-3 mt-3">Ajouter une annonce</a>
+                <div class="table-responsive-md mt-5">
+                <table class="table table-bordered table-striped table-dark text-white">
+                    <thead>
+                        <tr>
+                            <th scope="col">Identifiant</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Date de mise en ligne</th>
+                            <th scope="col" colspan="2" class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for annonce in annonces %}
+                        <tr>
+                            <td>{{ annonce.id }}</td>
+                            <td>{{ annonce.titre }}</td>
+                            <td>{{ annonce.prix }}€</td>
+                            <td>{{ annonce.createdAt |date('d/m/Y') }}</td>
+                            <td><a href="{{path('user_car_edit', {'id': annonce.voiture.id})}}" class="btn btn-success">Modifier</a></td>
+                            <td><a href="#" class="btn btn-danger">Supprimer</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

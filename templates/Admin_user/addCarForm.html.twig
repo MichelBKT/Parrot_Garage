@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une voiture{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% if is_granted('ROLE_ADMIN') %}
+            {% include "partials/adminNav.html.twig" %}
+            {% else %}
+            {% include "partials/userNav.html.twig" %}    
+            {% endif %}
+            <main class="col-lg-8 rounded p-2">
+                {% if app.request.attributes.get('_route') == 'user_car_edit' %}
+                <h2 class="text-success p-3 border-bottom">Modifier une voiture</h2> 
+                {% else %}               
+                <h2 class="text-success p-3 border-bottom">Ajouter une voiture</h2>
+                {% endif %}
+                {% for notice in app.flashes('notice') %}
+                    <div class="alert alert-info">
+                        {{ notice }}
+                    </div>
+                {% endfor %}
+                <div class="text-white">
+                 {{ form_start(formView) }}
+                        {{ form_row(formView.marque) }}
+                        {{ form_row(formView.modele) }}
+                        {{ form_row(formView.annee) }}
+                        {{ form_row(formView.energie) }}
+                        {{ form_row(formView.ct_ok) }}
+                        {{ form_row(formView.km) }}
+                        {{ form_row(formView.couleur) }}
+
+                        {# on affiche la photo si on est en modification #}
+                    {% if app.request.attributes.get('_route') == 'user_car_edit' %}
+                            <div>
+                                <img src="{{asset('assets/uploads/voiture/mini/350x300-' ~ voitures.photo)}}" alt="image">
+                            </div>                    
+                    {% endif %}
+                        
+                        {{ form_row(formView.photo) }}
+                        
+                        <button type="submit" class="btn btn-success">Valider</button>
+                        {% if app.request.attributes.get('_route') == 'user_car_edit' %}
+                        <a href="{{path('user_car_caracteristics_edit', {'id': voitures.id})}}" class="btn btn-light">Suivant</a>
+                        {% endif %}
+                    {{ form_end(formView) }}
+                </div>
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -6,6 +6,11 @@
 <body class="bg-secondary">
     <div class="row my-5 mx-5">
     <h2 class="text-success p-3">Formulaire de contact</h2>
+         {% for notice in app.flashes('notice') %}
+            <div class="alert alert-info">
+                {{ notice }}
+            </div>
+        {% endfor %}
     <form>
     <div class="form-row text-white p-3 border shadow-lg bg-primary">Titre
         <div class="form-check-inline">

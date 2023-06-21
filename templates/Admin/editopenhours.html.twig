@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un horaire{% endblock %}
+
+{% block body %}
+<body class="bg-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+    {% include "partials/adminNav.html.twig" %}
+            <main class="col-lg-8 rounded p-2 text-white">
+                <h2 class="text-success p-3 border-bottom">Modification d'un horaire</h2>
+                {% for notice in app.flashes('notice') %}
+                <div class="alert alert-info">
+                {{ notice }}
+                </div>
+                {% endfor %}
+                {{ form_start(form) }}
+                <div class="text-success fw-bold">
+                    {{ horaire.jourSemaine }}
+                </div>
+                    {{ form_row(form.plage_horaire) }} 
+                <button type="submit" class="btn btn-success">Valider la modification</button>
+                {{ form_end(form) }}
+
+            </main>    
+        </div>
+    </div>
+</body>
+{% endblock %}

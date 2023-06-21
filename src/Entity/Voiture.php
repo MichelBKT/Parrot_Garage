@@ -33,8 +33,8 @@ class Voiture
     #[ORM\JoinColumn(nullable: false)]
     private ?Couleur $couleur = null;
 
-     #[ORM\Column(type: Types::BLOB)]
-     private $photo = null;
+     #[ORM\Column(length: 50)]
+     private ?string $photo = null;
 
      #[ORM\Column]
      private ?int $km = null;
@@ -115,7 +115,7 @@ class Voiture
         return $this;
     }
 
-    public function getPhoto()
+    public function getPhoto(): ?string
     {
         return $this->photo;
     }
@@ -138,18 +138,5 @@ class Voiture
 
         return $this;
     }
-    /**
-     * @ORM\Column(name="photo", type="blob", nullable=true)
-     */
-    private $rawPhoto;
-
-    public function displayPhoto()
-    {
-        if(null === $this->rawPhoto) {
-            $this->rawPhoto = "data:image/jpg;base64," . base64_encode(stream_get_contents($this->getPhoto()));
-    }
-    return $this->rawPhoto;
-}
-
 
 }

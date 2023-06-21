@@ -46,6 +46,31 @@ class UserManagerController extends AbstractController
             'formView' => $form->createView(),
         ]);
     }
-    
+    #[Route('/admin/user/modify/{id}', name: 'admin_userModify_selected', methods: ['GET', 'POST'])]
+    public function edit(HoraireRepository $horaireRepository, User $user, Request $request,UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserUpdateType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+                );
+            $user = $form->getData();
 
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('notice', 'La modification de l\'utilisateur a bien été prise en compte');
+        }
+        
+
+        return $this->render('Admin/editUser.html.twig', [
+            'horaires'=>$horaireRepository->findAll(),
+            'users' => $user,
+            'form' => $form->createView()
+        ]);
+    }
 }

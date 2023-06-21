@@ -33,7 +33,6 @@ class AdduserType extends AbstractType
                 'class' => Poste::class,
                 'choice_label' => 'libelle'
             ])
-
         ;
     }
 

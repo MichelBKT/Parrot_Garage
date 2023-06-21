@@ -15,7 +15,7 @@
                         <tr>
                             <th scope="col">Jour de la semaine</th>
                             <th scope="col">Plage horaire</th>
-                            <th scope="col" colspan="2" class='text-center'>Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,8 +23,7 @@
                          <tr>   
                             <td>{{horaire.jourSemaine}}</td>
                             <td>{{horaire.plageHoraire}}</td>
-                            <td><a href="#" class="btn btn-success">Modifier</a></td>
-                            <td><a href="#" class="btn btn-danger">Supprimer</a></td>
+                            <td><a href="{{path('admin_modifyOpenHours_selected', {'id': horaire.id})}}" class="btn btn-success">Modifier</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

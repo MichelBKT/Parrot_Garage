@@ -9,7 +9,7 @@
             <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Détail du véhicule : </h1>
 
             <h2 class="col-8 mt-3 p-3 bg-success shadow-lg rounded mb-5">{{annonce.titre}}</h2>
-            <img class="col-6 my-3" alt="" src="{{annonce.voiture.displayPhoto }}">
+            <img class="col-6 my-3" alt="" src="{{ asset('assets/uploads/voiture/') ~ annonce.voiture.photo}}">
         </section>
             <div class="table-responsive-md">
                 <table class="table table-bordered table-striped table-dark text-white">
