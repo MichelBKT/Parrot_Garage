@@ -1,4 +1,4 @@
-$primary: #000C66;
+$primary: #000c66;
 $secondary: #050A30;
 $success: #FFC800;
 $info: #58f544;
@@ -9,23 +9,8 @@ $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 
-
 h1, h2, .carousel-caption, .hours{
     font-family: 'Audiowide', cursive;
-}
-
-#carouselExampleAutoPlaying{
-    width: 50%;
-    margin: auto;
-}
-
-.carousel-item{
-    width: 100%;
-    height: auto;
-}
-
-.carousel-caption h2{
-    color: red;
 }
 
 h1, h2{
@@ -47,4 +32,39 @@ h1, h2{
 ul li{
     list-style: none;
     font-size: 0.9em;
+} 
+  
+  .slide-1,
+  .slide-2,
+  .slide-3,
+  .slide-4,
+  .slide-5 {
+    margin-left: 17vw;
+    background-color: $secondary ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 18vw;
+    width: auto;
+  }
+
+  @media screen and (max-width:991px) {
+    .slide-1,
+  .slide-2,
+  .slide-3,
+  .slide-4,
+  .slide-5 {
+    background-color: $secondary ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40vh;
+    width: 75vw;
+  }
+  }
+
+.connexion{
+    height: 25vh;
 }
+
+

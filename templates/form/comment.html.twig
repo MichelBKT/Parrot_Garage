@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poster un commentaire - Garage Parrot{% endblock %}
+
+{% block body %}
+<body class="bg-secondary">
+    <div class="row my-5 mx-5">
+        <h2 class="text-success p-3">Poster un commentaire sur votre garage Parrot</h2>
+         {% for notice in app.flashes('notice') %}
+            <div class="alert alert-info">
+                {{ notice }}
+            </div>
+         {% endfor %}
+        <div class="text-white">
+            {{ form_start(formView)}}
+                {{ form_row(formView.auteur) }}
+                {{ form_row(formView.note) }}
+                {{ form_row(formView.libelle) }}
+                <button type="submit" class="btn btn-outline-info p-2 mt-3">Envoyer</button>
+                <a class="btn btn-outline-success p-2 mt-3" href="{{path('app_home')}}">Retour</a>
+            {{ form_end(formView) }}
+        </div>
+    </div>
+</body>
+{% endblock %}

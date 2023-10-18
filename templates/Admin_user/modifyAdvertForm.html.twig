@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une annonce{% endblock %}
+{% block title %}Modifier une annonce{% endblock %}
 
 {% block body %}
 <body class="bg-primary">
@@ -12,18 +12,16 @@
             {% include "partials/userNav.html.twig" %}    
             {% endif %}
             <main class="col-lg-8 rounded p-2">
-                {% if app.request.attributes.get('_route') == 'user_car_ad_edit' %}
                 <h2 class="text-success p-3 border-bottom">Modifier l'annonce</h2> 
-                {% else %}               
-                <h2 class="text-success p-3 border-bottom">Ajouter une annonce</h2>
-                {% endif %}
                 {% for notice in app.flashes('notice') %}
                     <div class="alert alert-info">
                         {{ notice }}
                     </div>
                 {% endfor %}
                 <div class="text-white">
-                 {{ form_start(formView) }}
+                {% for annonce in annonces %}
+                    
+                {{ form_start(formView) }}
                         {{ form_row(formView.titre) }}
                         {{ form_row(formView.prix) }}
                         {{ form_row(formView.ct_ok) }}
@@ -32,12 +30,12 @@
                         {{ form_row(formView.nombre_de_portes_5) }}
                         {{ form_row(formView.puissance_fiscale) }}
                         {{ form_row(formView.emission_CO2) }}
-                        {{ form_row(formView.photo) }}
                         {{ form_row(formView.created_at)}}
                         {{ form_row(formView.user) }}
                         <button type="submit" class="btn btn-success">Valider</button>
 
                     {{ form_end(formView) }}
+                {% endfor %}
                 </div>
             </main>    
         </div>

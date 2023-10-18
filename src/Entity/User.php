@@ -41,19 +41,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Annonce::class)]
     private Collection $user;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis_Client::class)]
-    private Collection $id_user;
-
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Entretien::class)]
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Entretien::class)]
     private Collection $entretien;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Service::class)]
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Service::class)]
     private Collection $service;
 
     public function __construct()
     {
         $this->user = new ArrayCollection();
-        $this->id_user = new ArrayCollection();
+        $this->user = new ArrayCollection();
         $this->entretien = new ArrayCollection();
         $this->service = new ArrayCollection();
     }
@@ -194,37 +191,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, avisClient>
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->id_user;
-    }
-
-    public function addIdUser(avis_Client $idUser): self
-    {
-        if (!$this->id_user->contains($idUser)) {
-            $this->id_user->add($idUser);
-            $idUser->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdUser(avis_Client $idUser): self
-    {
-        if ($this->id_user->removeElement($idUser)) {
-            // set the owning side to null (unless already changed)
-            if ($idUser->getUser() === $this) {
-                $idUser->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
+       /**
      * @return Collection<int, entretien>
      */
     public function getEntretien(): Collection

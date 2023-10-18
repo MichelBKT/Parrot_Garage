@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion des services{% endblock %}
+{% block title %}Gestion des services / entretiens{% endblock %}
 
 {% block body %}
 <body class="bg-primary">
@@ -8,39 +8,44 @@
         <div class="row justify-content-center">
     {% include "partials/adminNav.html.twig" %}
             <main class="col-lg-8 rounded p-2">
-                <h2 class="text-success p-3 border-bottom">Gestion des services</h2>
-                <a href="#" class="btn btn-light mb-3 mt-3">Ajouter un service</a>
+                <h2 class="text-success p-3 border-bottom">Gestion des services / entretiens</h2>
+                {% for notice in app.flashes('notice') %}
+                    <div class="alert alert-info">
+                        {{ notice }}
+                    </div>
+                {% endfor %}
+                <a href="{{path('app_service_manager_add')}}" class="btn btn-light mb-3 mt-3">Ajouter un service</a>
                  <div class="table-responsive-md mt-2">
                 <table class="table table-bordered table-striped table-dark text-white text-center">
                     <thead>
                         <tr>
-                            <th scope="col">Service</th>
-                            <th scope="col" colspan="2" class="text-center">Action</th>
+                            <th scope="col" class="text-success">Service</th>
+                            <th scope="col" colspan="2" class="text-center text-success">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for service in services %}
                         <tr>
                             <td>{{ service.libelle }}</td>
-                            <td><a href="#" class="btn btn-danger">Supprimer</a></td>
+                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('app_service_manager_delete', {'id': service.id})}}" class="btn btn-danger">Supprimer</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-light mb-3 mt-3">Ajouter un entretien</a>
+                <a href="{{path('app_entretien_manager_add')}}" class="btn btn-light mb-3 mt-3">Ajouter un entretien</a>
                  <div class="table-responsive-md mt-2">
                 <table class="table table-bordered table-striped table-dark text-white text-center">
                     <thead>
                         <tr>
-                            <th scope="col">Entretien</th>
-                            <th scope="col" colspan="2" class="text-center">Action</th>
+                            <th scope="col" class="text-success">Entretien</th>
+                            <th scope="col" colspan="2" class="text-center text-success">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for entretien in entretiens %}
                         <tr>
                             <td>{{ entretien.libelle }}</td>
-                            <td><a href="#" class="btn btn-danger">Supprimer</a></td>
+                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('app_entretien_manager_delete', {'id':entretien.id})}}" class="btn btn-danger">Supprimer</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

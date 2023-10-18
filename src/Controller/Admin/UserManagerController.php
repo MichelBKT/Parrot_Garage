@@ -39,10 +39,25 @@ class UserManagerController extends AbstractController
                 );
           $entityManager->persist($user);
           $entityManager->flush();
-          return $this->redirectToRoute('app_user');  
+          $this->addFlash('notice', 'Ajout effectué avec succès!');
+          return $this->redirectToRoute('app_usermanager');  
         }
         return $this->render('Admin/adduserform.html.twig',[
             'horaires'=>$horaireRepository->findAll(),
+            'formView' => $form->createView(),
+        ]);
+    }
+    #[Route('/admin/user/delete/{id}', name: 'app_user_delete', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function deleteUser(HoraireRepository $horaireRepository, User $user, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
+    {
+        $form= $this->createForm(AdduserType::class, $user);
+        $entityManager->remove($user);
+        $entityManager->flush();
+        $this->addFlash('notice', 'Suppression effectuée avec succès!');
+
+        return $this->render('Admin/usermanager.html.twig',[
+            'horaires'=> $horaireRepository->findAll(),
+            'users' => $userRepository->findAll(),
             'formView' => $form->createView(),
         ]);
     }

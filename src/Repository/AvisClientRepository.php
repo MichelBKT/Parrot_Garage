@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Avis_Client;
+use App\Entity\Avisclient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<AvisClient>
  *
- * @method AvisClient|null find($id, $lockMode = null, $lockVersion = null)
- * @method AvisClient|null findOneBy(array $criteria, array $orderBy = null)
- * @method AvisClient[]    findAll()
- * @method AvisClient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Avisclient|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Avisclient|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Avisclient[]    findAll()
+ * @method Avisclient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AvisClientRepository extends ServiceEntityRepository
+class AvisclientRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Avis_Client::class);
+        parent::__construct($registry, Avisclient::class);
     }
 
-    public function save(Avis_Client $entity, bool $flush = false): void
+    public function save(Avisclient $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AvisClientRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Avis_Client $entity, bool $flush = false): void
+    public function remove(Avisclient $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 

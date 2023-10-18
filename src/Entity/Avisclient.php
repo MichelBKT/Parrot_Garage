@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\AvisClientRepository;
+use App\Repository\AvisclientRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AvisClientRepository::class)]
-class Avis_Client
+#[ORM\Entity(repositoryClass: AvisclientRepository::class)]
+class Avisclient
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,9 +23,8 @@ class Avis_Client
     #[ORM\Column(length: 50)]
     private ?string $auteur = null;
 
-    #[ORM\ManyToOne(inversedBy: 'User_id')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    #[ORM\Column]
+    private ?bool $actif = false;
 
     public function getId(): ?int
     {
@@ -68,15 +67,16 @@ class Avis_Client
         return $this;
     }
 
-    public function getUser(): ?User
+    public function isActif(): ?bool
     {
-        return $this->user;
+        return $this->actif;
     }
 
-    public function setUser(?User $user): self
+    public function setActif(?bool $actif): self
     {
-        $this->user = $user;
+        $this->actif = $actif;
 
         return $this;
     }
+
 }

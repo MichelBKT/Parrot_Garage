@@ -3,12 +3,12 @@
 namespace App\Controller\Admin_User;
 
 use App\Entity\Annonce;
-use App\Entity\Caracteristique;
-use App\Entity\Voiture;
-use App\Entity\VoitureCaracteristique;
+use App\Entity\Avisclient;
+use App\Form\EditavisType;
 use App\Repository\AnnonceRepository;
-use App\Repository\AvisClientRepository;
+use App\Repository\AvisclientRepository;
 use App\Repository\HoraireRepository;
+use App\Service\ImageRedi;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,152 +44,52 @@ class MainUserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/car/new', name: 'user_car_new')]
-    public function createCar(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
-    {
-        $voiture = new Voiture();
-
-        $form = $this->createForm(CarType::class, $voiture);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            //on récupère l'image
-            $photos = $form->get('photo')->getData();
-            foreach ($photos as $photo){
-                // on définit le dossier de destination
-                $folder = 'voiture';
-
-                // on appelle le service d'ajout
-                $file = $pictureService->add($photo, $folder, 350, 300);
-                $voiture->setPhoto($file);
-            }
-          $entityManager->persist($voiture);
-          $entityManager->flush();
-          $this->addFlash('notice', 'Création voiture effectuée!');
-          return $this->redirectToRoute('user_car_caracteristics_new');
-        }
-          return $this->render('Admin_user/addCarForm.html.twig',[
-            'horaires'=>$horaireRepository->findAll(),
-            'formView' => $form->createView(),
-        ]);
-
-    }
-
-    #[Route('/user/car/edit/{id}', name: 'user_car_edit')]
-    public function editCar(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager, Voiture $voiture, PictureService $pictureService): Response
-    {
-        $form= $this->createForm(CarType::class, $voiture);
-        $form->handleRequest($request);
-        $voiture = $form->getData();
-        if ($form->isSubmitted() && $form->isValid()){
-            //on récupère l'image
-            $photos = $form->get('photo')->getData();
-            foreach ($photos as $photo){
-                // on définit le dossier de destination
-                $folder = 'voiture';
-
-                // on appelle le service d'ajout
-                $file = $pictureService->add($photo, $folder, 350, 300);
-                $voiture->setPhoto($file);
-            }
-
-            $entityManager->persist($voiture);
-            $entityManager->flush();
-
-            $this->addFlash('notice', 'La modification a bien été prise en compte');
-        }
-        return $this->render('Admin_user/addCarForm.html.twig', [
-            'horaires'=> $horaireRepository->findAll(),
-            'voitures'=> $voiture,
-            'formView' => $form->createView()
-        ]);
-    }
-
-    #[Route('/user/car/caracteristics/new', name: 'user_car_caracteristics_new')]
-    public function createCaracteristics(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $caracteristique = new Caracteristique();
-        $form = $this->createForm(CaracteristiqueType::class, $caracteristique);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-          $entityManager->persist($caracteristique);
-          $entityManager->flush();
-          $this->addFlash('notice', 'Création caractéristiques effectuée!');
-          return $this->redirectToRoute('user_car_link_new');
-        }
-          return $this->render('Admin_user/addCaracteristiqueForm.html.twig',[
-            'horaires'=>$horaireRepository->findAll(),
-            'formView' => $form->createView(),
-        ]);
-
-    }
-
-    #[Route('/user/car/caracteristics/edit/{id}', name: 'user_car_caracteristics_edit')]
-    public function editCaracteristics(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager,Caracteristique $caracteristique, Voiture $voiture): Response
-    {
-        $form= $this->createForm(CaracteristiqueType::class, $caracteristique);
-        $form->handleRequest($request);
-        $caracteristique = $form->getData();
-        if ($form->isSubmitted() && $form->isValid()){
-            
-            $entityManager->persist($caracteristique);
-            $entityManager->flush();
-
-            $this->addFlash('notice', 'La modification a bien été prise en compte');
-        }
-        return $this->render('Admin_user/addCaracteristiqueForm.html.twig', [
-            'horaires'=> $horaireRepository->findAll(),
-            'voitures' => $voiture,
-            'caracteristiques'=> $caracteristique,
-            'formView' => $form->createView()
-        ]);
-    } 
-
-    #[Route('/user/car/link/new', name: 'user_car_link_new')]
-    public function createLink(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $link = new VoitureCaracteristique();
-        $form = $this->createForm(LinkCarType::class, $link);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-          $entityManager->persist($link);
-          $entityManager->flush();
-          $this->addFlash('notice', 'Lien voiture/caractéristiques créé!');
-          return $this->redirectToRoute('user_ad_new');
-        }
-          return $this->render('Admin_user/addLinkForm.html.twig',[
-            'horaires'=>$horaireRepository->findAll(),
-            'formView' => $form->createView(),
-        ]);
-
-    }
-            
     #[Route('/user/ad/new', name: 'user_ad_new')]
-    public function createAdvert(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager): Response
+    public function createAdvert(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     { 
         $annonce = new Annonce();
 
         $form = $this->createForm(AdvertType::class, $annonce);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+                //on récupère l'image
+                $photos = $form->get('photo')->getData();
+                foreach ($photos as $photo){
+                    // on définit le dossier de destination
+                    $folder = 'voiture';
+    
+                    // on appelle le service d'ajout
+                    $file = $pictureService->add($photo, $folder, 350, 300);
+                    $annonce->setPhoto($file);
+                }
           $entityManager->persist($annonce);
           $entityManager->flush();
-          return $this->redirectToRoute('app_user');  
+          return $this->redirectToRoute('user_ad');  
         }
         return $this->render('Admin_user/addAdvertForm.html.twig',[
             'horaires'=>$horaireRepository->findAll(),
             'formView' => $form->createView(),
         ]);
-
     }
+    
 
-    #[Route('/user/car/ad/edit/{id}', name: 'user_car_ad_edit')]
-    public function editAdvert(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager,Annonce $annonce, Voiture $voiture): Response
+    #[Route('/user/car/ad/edit/{id}', name: 'user_car_ad_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function editAdvert(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager,Annonce $annonce, PictureService $pictureService): Response
     {
         $form= $this->createForm(AdvertType::class, $annonce);
         $form->handleRequest($request);
         $annonce = $form->getData();
         if ($form->isSubmitted() && $form->isValid()){
-            
+            //on récupère l'image
+            $photos = $form->get('photo')->getData();
+            foreach ($photos as $photo){
+                // on définit le dossier de destination
+                $folder = 'voiture';
+
+                // on appelle le service d'ajout
+                $file = $pictureService->add($photo, $folder, 600, 300);
+                $annonce->setPhoto($file);
+            }
             $entityManager->persist($annonce);
             $entityManager->flush();
 
@@ -198,17 +98,59 @@ class MainUserController extends AbstractController
         }
         return $this->render('Admin_user/addAdvertForm.html.twig', [
             'horaires'=> $horaireRepository->findAll(),
-            'voitures'=> $voiture,
-            'annnonces'=> $annonce,
+            'annonces'=> $annonce,
+            'formView' => $form->createView()
+        ]);
+    } 
+    #[Route('/user/car/ad/delete/{id}', name: 'user_car_ad_delete', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function deleteAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository, EntityManagerInterface $entityManager,Annonce $annonce): Response
+    {
+        $form= $this->createForm(AdvertType::class, $annonce);
+        $entityManager->remove($annonce);
+        $entityManager->flush();
+        $this->addFlash('notice', 'Suppression effectuée avec succès!');
+
+        return $this->render('Admin_user/advertManager.html.twig', [
+            'horaires'=> $horaireRepository->findAll(),
+            'annonces'=> $annonceRepository->findAll(),
             'formView' => $form->createView()
         ]);
     } 
     #[Route('/user/comments', name: 'user_comments')]
-    public function showComments(HoraireRepository $horaireRepository, AvisClientRepository $avisClientRepository): Response
+    public function showComments(HoraireRepository $horaireRepository, AvisclientRepository $avisClientRepository): Response
     {
         return $this->render('Admin_user/comment.html.twig', [
             'horaires' => $horaireRepository->findAll(),
             'avisClients' => $avisClientRepository->findAll(),
         ]);
     }
+    #[Route('/user/comments/manager', name: 'user_comments_manager')]
+    public function manageComments(HoraireRepository $horaireRepository, AvisclientRepository $avisClientRepository): Response
+    {
+        return $this->render('Admin_user/modifyComments.html.twig', [
+            'horaires' => $horaireRepository->findAll(),
+            'avisClients' => $avisClientRepository->findAll(),
+        ]);
+    }
+    #[Route('/user/comments/edit/{id}', name: 'user_comments_edit', requirements: ['id' => '\d+'], methods: ['GET'])]
+    public function editComments(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager,Avisclient $avisclient ): Response
+    {
+        $form= $this->createForm(EditavisType::class, $avisclient);
+        $form->handleRequest($request);
+        $avisclient = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()){
+            
+            $entityManager->persist($avisclient);
+            $entityManager->flush();
+
+            $this->addFlash('notice', 'La modification a bien été prise en compte');
+
+        }
+        return $this->render('Admin_user/addComment.html.twig', [
+            'horaires'=> $horaireRepository->findAll(),
+            'avisclients'=> $avisclient,
+            'formView' => $form->createView()
+        ]);
+    } 
 }
+

@@ -1,53 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails {{annonce.voiture.marque}} {{annonce.voiture.modele}} - Garage Parrot{% endblock %}
+{% block title %}Détails {{annonce.titre}} - Garage Parrot{% endblock %}
 
 {% block body %}
 <body class="bg-secondary">
     <div class="container-fluid">
         <section class="row justify-content-center">
             <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Détail du véhicule : </h1>
-
-            <h2 class="col-8 mt-3 p-3 bg-success shadow-lg rounded mb-5">{{annonce.titre}}</h2>
-            <img class="col-6 my-3" alt="" src="{{ asset('assets/uploads/voiture/') ~ annonce.voiture.photo}}">
+            <img class="col-6 my-3" alt="" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}">
         </section>
             <div class="table-responsive-md">
                 <table class="table table-bordered table-striped table-dark text-white">
-                    <caption class="text-success fw-bold">{{annonce.voiture.marque}} {{annonce.voiture.modele}}</caption>
+                    <caption class="text-success fw-bold">{{annonce.titre}}</caption>
                     <thead>
                         <tr>
-                            <th scope="col">Elements techniques</th>
-                            <th scope="col">Valeurs</th>
+                            <th scope="col" class="text-success fw-bold">Elements techniques</th>
+                            <th scope="col" class="text-success fw-bold">Valeurs</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row text-end">Date de 1ère mise en circulation</th>
-                            <td>{{ annonce.voiture.annee | date('d/m/Y') }}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Energie</th>
-                            <td>{{annonce.voiture.energie}}</td>
-                        </tr>
-                        <tr>
                             <th scope="row">Contrôle technique</th>
-                            <td>{% if annonce.voiture.CtOk == 1 %} OK
+                            <td>{% if annonce.ctOk == 1 %} OK
                             {% else %}
                                 A passer
                             {% endif %}
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Couleur</th>
-                            <td>{{annonce.voiture.couleur.libelle}}</td>
-                        </tr>
-                        <tr>
                             <th class='col-4'>Kilométrage</th>
-                            <td>{{annonce.voiture.km}}</td>
-                        </tr>
+                            <td>{{annonce.kilometrage}}</td>
+                        </tr>                        
                         <tr>
                             <th class='col-4'>Boite de vitesse</th>
-                            <td>{% if caracteristique.BoiteVitesseManuelle == 1 %} Manuelle
+                            <td>{% if annonce.BoiteVitesseManuelle == 1 %} Manuelle
                             {% else %}
                                 Automatique
                             {% endif %}
@@ -55,30 +41,23 @@
                         </tr>
                         <tr> 
                             <th class='col-4'> Nombre de portes</th>
-                            <td>{% if caracteristique.nbPortes5 == 1 %} 5 
+                            <td>{% if annonce.nombreDePortes5 == 1 %} 5 
                             {% else %}3{% endif %}
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">Puissance fiscale</th>
-                            <td>{{caracteristique.puissanceFisc}} cv</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Puissance din</th>
-                            <td>{{caracteristique.puissanceDin}} ch</td>
+                            <td>{{annonce.puissanceFiscale}} cv</td>
                         </tr>
                         <tr>
                             <th scope="row">Emission de Co2</th>
-                            <td>{{caracteristique.CO2}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Prix</th>
-                            <td>{{annonce.prix}} € TTC</td>
+                            <td>{{annonce.emissionCO2}} g/km</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        <a class="btn btn-dark text-success mb-5" href="{{path('app_form_vehicule', {'id': annonce.id})}}">Contacter le vendeur</button>
+                <p class="text-success fw-bold">Besoin de plus d'informations?</p>
+                <a class="btn btn-dark text-success mb-5" href="{{path('app_form_vehicule', {'id': annonce.id})}}">Contacter le vendeur</button>
         <a class="btn btn-outline-dark text-success mb-5" href="{{path('app_vehicules/details/all')}}">Retour</a>
     </div>
 </body>

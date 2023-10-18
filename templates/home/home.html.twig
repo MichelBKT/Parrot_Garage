@@ -4,32 +4,52 @@
 
 {% block body %}
 <body class="bg-secondary">
-    <h1 class="col-12 my-5 p-3 bg-dark text-success shadow-lg rounded">Nos derniers arrivages véhicules d'occasion</h1>
-    <div id="carouselExampleAutoPlaying" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('build/images/opel_astra.png')}}" class="w-100" alt="pub_opel_astra">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('build/images/alfa_giulia.png')}}" class="w-100" alt="pub_alfa_romeo_giulia">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('build/images/opel_corsa.png')}}" class="w-100" alt="pub_opel_corsa">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoPlaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div class="row">
+        <h1 class="col-12 my-5 p-3 bg-dark text-success shadow-lg rounded">Derniers arrivages véhicules d'occasion</h1>
     </div>
+        <div class="container">
+            <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item slide-1 active " >
+                      {% for annonce in annonces|slice(-1,1) %}
+                            <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub1">
+                        {% endfor %}  
+                    </div>                
+                    <div class="carousel-item slide-2">
+                        {% for annonce in annonces|slice(-2,1) %}                        
+                            <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub2" >
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-item slide-3" >
+                        {% for annonce in annonces|slice(-3,1) %}
+                            <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub3">
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-item slide-4" >
+                        {% for annonce in annonces|slice(-4,1) %}
+                            <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub3">
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-item slide-5" >
+                        {% for annonce in annonces|slice(-5,1) %}
+                            <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub3">
+                        {% endfor %}
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#diaporama" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#diaporama" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>  
 
-    <section class="row justify-content-center">
+    <section class="row mt-5 justify-content-center">
 
-        <h1 class="col-12 mt-5 p-3 bg-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
+        <h1 class="col-12 m-5 p-3 bg-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
         <div class="description col-8 lg-col-6 mt-3 lg-p-5 lg-m-5">
             <p class="description-welcome text-success">"Toute l'équipe est à votre disposition pour vous accompagner et vous conseiller sur l'achat d'un véhicule
             d'occasion ou pour la réparation et l'entretien de votre véhicule. N'hésitez-pas à nous rendre visite ou nous contacter pour plus de renseignements."</p>
@@ -101,6 +121,8 @@
             <div class="customers-comments row justify-content-center mb-5">
                 <h2 class="col-6  bg-success shadow-lg rounded my-5 mt-5 ">Avis clients</h2>
                 {% for avisClient in avisClients %}
+                {% if avisClient.actif  == false %}
+                {% else %}     
                     
                 <div class="col-8 bg-dark text-white shadow-lg rounded">Avis posté par : {{ avisClient.auteur }} 
                     {% if avisClient.note == 5 %} 
@@ -127,7 +149,10 @@
                     {% endif %}
                         <div class="col-8 text-white fst-italic"> {{ avisClient.libelle }}</div></br>    
                 </div>
+                    {% endif %}
                     {% endfor %}
+                
+                <a href="{{path('app_comment_new')}}" class="btn btn-success">Poster un avis</a>
             </div>
         </section>
     </div>

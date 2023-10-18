@@ -13,16 +13,21 @@
             {% endif %}
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Gestion des annonces</h2>
-                <a href="{{path('user_car_new')}}" class="btn btn-light mb-3 mt-3">Ajouter une annonce</a>
+                {% for notice in app.flashes('notice') %}
+                        <div class="alert alert-info">
+                            {{ notice }}
+                        </div>
+                    {% endfor %}
+                <a href="{{path('user_ad_new')}}" class="btn btn-light mb-3 mt-3">Ajouter une annonce</a>
                 <div class="table-responsive-md mt-5">
                 <table class="table table-bordered table-striped table-dark text-white">
                     <thead>
                         <tr>
-                            <th scope="col">Identifiant</th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Date de mise en ligne</th>
-                            <th scope="col" colspan="2" class="text-center">Action</th>
+                            <th scope="col" class="text-success text-center">Identifiant</th>
+                            <th scope="col" class="text-success text-center">Titre</th>
+                            <th scope="col" class="text-success text-center">Prix</th>
+                            <th scope="col" class="text-success text-center">Date de mise en ligne</th>
+                            <th scope="col" class="text-success text-center" colspan="2" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,8 +37,8 @@
                             <td>{{ annonce.titre }}</td>
                             <td>{{ annonce.prix }}€</td>
                             <td>{{ annonce.createdAt |date('d/m/Y') }}</td>
-                            <td><a href="{{path('user_car_edit', {'id': annonce.voiture.id})}}" class="btn btn-success">Modifier</a></td>
-                            <td><a href="#" class="btn btn-danger">Supprimer</a></td>
+                            <td><a href="{{path('user_car_ad_edit', {'id': annonce.id})}}" class="btn btn-success">Modifier</a></td>
+                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('user_car_ad_delete', {'id': annonce.id})}}" class="btn btn-danger">Supprimer</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

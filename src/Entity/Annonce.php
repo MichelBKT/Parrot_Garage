@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AnnonceRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnnonceRepository::class)]
@@ -32,9 +33,32 @@ class Annonce
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(nullable: true)]
+    private $photo = null;
+
+    #[ORM\Column]
+    private ?bool $ctOk = null;
+
+    #[ORM\Column]
+    private ?int $kilometrage = null;
+
+    #[ORM\Column]
+    private ?bool $boiteVitesseManuelle = null;
+
+    #[ORM\Column]
+    private ?bool $nombreDePortes5 = null;
+
+    #[ORM\Column]
+    private ?int $puissanceFiscale = null;
+
+    #[ORM\Column]
+    private ?int $emissionCO2 = null;
+
+
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Voiture $voiture = null;
+
+
 
     public function getId(): ?int
     {
@@ -89,15 +113,88 @@ class Annonce
         return $this;
     }
 
-    public function getVoiture(): ?voiture
+    public function getPhoto()
     {
-        return $this->voiture;
+        return $this->photo;
     }
 
-    public function setVoiture(voiture $voiture): self
+    public function setPhoto($photo): self
     {
-        $this->voiture = $voiture;
+        $this->photo = $photo;
 
         return $this;
-    } 
+    }
+
+    public function isCtOk(): ?bool
+    {
+        return $this->ctOk;
+    }
+
+    public function setCtOk(?bool $ctOk): self
+    {
+        $this->ctOk = $ctOk;
+
+        return $this;
+    }
+
+    public function getKilometrage(): ?int
+    {
+        return $this->kilometrage;
+    }
+
+    public function setKilometrage(int $kilometrage): self
+    {
+        $this->kilometrage = $kilometrage;
+
+        return $this;
+    }
+
+    public function isBoiteVitesseManuelle(): ?bool
+    {
+        return $this->boiteVitesseManuelle;
+    }
+
+    public function setBoiteVitesseManuelle(?bool $boiteVitesseManuelle): self
+    {
+        $this->boiteVitesseManuelle = $boiteVitesseManuelle;
+
+        return $this;
+    }
+
+    public function isNombreDePortes5(): ?bool
+    {
+        return $this->nombreDePortes5;
+    }
+
+    public function setNombreDePortes5(?bool $nombreDePortes5): self
+    {
+        $this->nombreDePortes5 = $nombreDePortes5;
+
+        return $this;
+    }
+
+    public function getPuissanceFiscale(): ?int
+    {
+        return $this->puissanceFiscale;
+    }
+
+    public function setPuissanceFiscale(int $puissanceFiscale): self
+    {
+        $this->puissanceFiscale = $puissanceFiscale;
+
+        return $this;
+    }
+
+    public function getEmissionCO2(): ?int
+    {
+        return $this->emissionCO2;
+    }
+
+    public function setEmissionCO2(int $emissionCO2): self
+    {
+        $this->emissionCO2 = $emissionCO2;
+
+        return $this;
+    }
+
 }
