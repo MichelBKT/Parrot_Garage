@@ -10749,12 +10749,12 @@ ul li {
 .slide-3,
 .slide-4,
 .slide-5 {
-  margin-left: 17vw;
+  margin-left: 25vw;
   background-color: #050A30;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 18vw;
+  height: 20vw;
   width: auto;
 }
 
@@ -10774,4 +10774,63 @@ ul li {
 }
 .connexion {
   height: 25vh;
+}
+
+.pagination {
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.current {
+  font-size: 1.5rem;
+  color: #FFC800;
+}
+
+.current, .page > a {
+  padding-right: 20px;
+}
+
+.page > a, .next > a, .last > a, .first > a, .previous > a {
+  font-size: 1.5rem;
+  color: #aba7a7;
+}
+
+.titleCard {
+  font-size: 0.98rem;
+}
+
+.containerFilters {
+  background-color: grey;
+  margin-bottom: 10%;
+  width: 75%;
+  text-align: center;
+  margin-left: 15%;
+}
+
+.containerFilters > p > label {
+  text-align: center;
+}
+
+.containerFilters > p {
+  margin: 0;
+}
+
+@media screen and (min-width: 1025px) {
+  .containerFilters {
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-bottom: 3%;
+  }
+  .form-label {
+    width: 20%;
+  }
+  .containerFilters > p {
+    display: inline;
+  }
+  .containerFilters > p > label {
+    text-align: center;
+  }
+}
+.emailForm, .passwordForm {
+  width: 30%;
 }/*# sourceMappingURL=app.css.map */

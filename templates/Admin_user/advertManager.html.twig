@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for annonce in annonces %}
+                        {% for annonce in pagination %}
                         <tr>
                             <td>{{ annonce.id }}</td>
                             <td>{{ annonce.titre }}</td>
@@ -43,6 +43,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                {{ knp_pagination_render(pagination)}}
             </main>    
         </div>
     </div>

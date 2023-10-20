@@ -8,22 +8,52 @@
     <div class="container-fluid">
         <section class="row justify-content-center">
             <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Nos véhicules d'occasion</h1>
-            {% for annonce in annonces %} 
+            <div class="row">
+
+                <form id="filters">
+                    <div class="containerFilters">
+                        <p>
+                            <label for="km" class="form-label text-light p-3">Kilométrage
+                                <input type="range" class="form-range pi_input" min="0" max="250000" step="5000" />
+                                <output class="value">125000</output>
+                            </label>
+                        </p>
+                        <p class="mx-5">
+                            <label for="prix" class="form-label text-light p-3">Prix
+                                <input type="range" class="form-range pi_input1" min="1000" max="100000" step="1000" />
+                                <output class="value1">25000</output>
+                            </label>
+                        </p>
+                        <p class="mx-5">
+                            <label for="co2" class="form-label text-light p-3">Emission CO2
+                                <input type="range" class="form-range pi_input2" min="0" max="300" step="10" />
+                                <output class="value2">150</output>
+                            </label>
+                        </p>
+
+                    </div>
+                </form>
+                
+            </div>
+            {% for annonce in pagination %} 
               <div class="card bg-dark text-white mb-5 mx-5" style="width: 18rem;">
-                    <img src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" class="card-img-top h-50" alt="...">
+                    <img src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" class="card-img-top h-50" alt="photo">
                     <div class="card-body">
-                        <h5 class="card-title text-success fw-semibold">{{ annonce.titre }}</h5>
+                        <h5 class="card-title text-success fw-semibold titleCard">{{annonce.titre}}</br></br></h5>
                         <p class="card-text"></p>
                         <p class="card-text fw-semibold border-top">Prix : {{ annonce.prix }}€ </p>
-                            
-                            <a href="{{ path('app_vehicules_details', {'id': annonce.id}) }}" class="btn details text-success fw-semibold btn-primary d-flex justify-content-center ">Détails</a>
-
-
-                        
+                        <a href="{{ path('app_vehicules_details', {'id': annonce.id}) }}" class="btn details text-success fw-semibold btn-primary d-flex justify-content-center ">Détails</a> 
                     </div>
                 </div>
             {% endfor %}
+            
+            {{ knp_pagination_render(pagination) }}
+
         </section>
     </div>
 </body>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('build/filterValue.js')}}"></script>
 {% endblock %}

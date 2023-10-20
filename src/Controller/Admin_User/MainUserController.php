@@ -11,7 +11,10 @@ use App\Repository\HoraireRepository;
 use App\Service\ImageRedi;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request as BrowserKitRequest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,11 +39,17 @@ class MainUserController extends AbstractController
     }
 
     #[Route('/user/ad/manager', name: 'user_ad_manager')]
-    public function manageAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository): Response
+    public function manageAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $annonceRepository->paginationQuery(),
+            $request->query->getInt('page', 1),
+            10
+        );
         return $this->render('Admin_user/advertManager.html.twig', [
             'horaires' => $horaireRepository->findAll(),
             'annonces' => $annonceRepository->findAll(),
+            'pagination' => $pagination
         ]);
     }
 
@@ -64,7 +73,7 @@ class MainUserController extends AbstractController
                 }
           $entityManager->persist($annonce);
           $entityManager->flush();
-          return $this->redirectToRoute('user_ad');  
+          return $this->redirectToRoute('user_ad_manager');  
         }
         return $this->render('Admin_user/addAdvertForm.html.twig',[
             'horaires'=>$horaireRepository->findAll(),
