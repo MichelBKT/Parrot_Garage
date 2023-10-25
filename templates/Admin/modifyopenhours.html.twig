@@ -10,12 +10,12 @@
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Gestion des horaires d'ouverture</h2>
                  <div class="table-responsive-md mt-5">
-                <table class="table table-bordered table-striped table-dark text-white">
+                <table class="table table-bordered text-white">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-success">Jour de la semaine</th>
-                            <th scope="col" class="text-success">Plage horaire</th>
-                            <th scope="col" class="text-success">Action</th>
+                            <th scope="col" class="text-success bg-secondary">Jour de la semaine</th>
+                            <th scope="col" class="text-success bg-secondary">Plage horaire</th>
+                            <th scope="col" class="text-success bg-secondary">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,7 +23,7 @@
                          <tr>   
                             <td>{{horaire.jourSemaine}}</td>
                             <td>{{horaire.plageHoraire}}</td>
-                            <td><a href="{{path('admin_modifyOpenHours_selected', {'id': horaire.id})}}" class="btn btn-success">Modifier</a></td>
+                            <td><a href="{{path('admin_modifyOpenHours_selected', {'id': horaire.id})}}" class="btn btn-outline-success">Modifier</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

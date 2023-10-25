@@ -1,14 +1,14 @@
-$primary: #000c66;
-$secondary: #050A30;
-$success: #FFC800;
+$primary: #151f67;
+$secondary: #154d67;
+$success: #e6de01;
 $info: #58f544;
 $dark: #000000;
-$light: #f2f2f2;
+$light: #d4d4d4;
 $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 
-h1, h2, .carousel-caption, .hours{
+h1, h2, .hours{
     font-family: 'Audiowide', cursive;
 }
 
@@ -16,9 +16,14 @@ h1, h2{
     text-align: center;
 }
 
-.nav-link, .dropdown-item, .description-welcome, .entretiens-text, .services-text{
+.nav-link.active {
+  border-bottom: solid 2px $success;
+}
+
+.dropdown-item, .description-welcome, .entretiens-text, .services-text{
     text-align: justify;
     font-family: 'Hind Madurai', sans-serif;
+    color: white;
     font-size: 1em;
     font-weight: 700;
 }
@@ -30,7 +35,6 @@ h1, h2{
 
 ul li{
     list-style: none;
-    font-size: 0.9em;
 } 
   
   .slide-1,
@@ -38,7 +42,7 @@ ul li{
   .slide-3,
   .slide-4,
   .slide-5 {
-    margin-left: 25vw;
+    margin-left: 20vw;
     background-color: $secondary ;
     background-size: cover;
     background-position: center;
@@ -49,10 +53,11 @@ ul li{
 
   @media screen and (max-width:991px) {
     .slide-1,
-  .slide-2,
-  .slide-3,
-  .slide-4,
-  .slide-5 {
+    .slide-2,
+    .slide-3,
+    .slide-4,
+    .slide-5 {
+    margin-left: 10vw;
     background-color: $secondary ;
     background-size: cover;
     background-position: center;
@@ -88,7 +93,6 @@ ul li{
   font-size: 0.98rem;
 }
 .containerFilters {
-  background-color: grey;
   margin-bottom: 10%;
   width: 75%;
   text-align: center;

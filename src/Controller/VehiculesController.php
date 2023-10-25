@@ -15,9 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VehiculesController extends AbstractController
 {
-    #[Route('/vehicules/details/all', name: 'app_vehicules/details/all')]
+    #[Route('/vehicules/all', name: 'app_vehicules_all')]
     public function index(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository,  Request $request, PaginatorInterface $paginator): Response
     {
+        
         $pagination = $paginator->paginate(
             $annonceRepository->paginationQuery(),
             $request->query->getInt('page', 1),

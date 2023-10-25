@@ -18,27 +18,26 @@
                             {{ notice }}
                         </div>
                     {% endfor %}
-                <a href="{{path('user_ad_new')}}" class="btn btn-light mb-3 mt-3">Ajouter une annonce</a>
+                <a href="{{path('user_ad_new')}}" class="btn btn-outline-light mb-3 mt-3">Ajouter une annonce</a>
                 <div class="table-responsive-md mt-5">
-                <table class="table table-bordered table-striped table-dark text-white">
+                <table class="table table-bordered text-white">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-success text-center">Identifiant</th>
-                            <th scope="col" class="text-success text-center">Titre</th>
-                            <th scope="col" class="text-success text-center">Prix</th>
-                            <th scope="col" class="text-success text-center">Date de mise en ligne</th>
-                            <th scope="col" class="text-success text-center" colspan="2" class="text-center">Action</th>
+                            <th scope="col" class="text-success text-center bg-secondary">Titre</th>
+                            <th scope="col" class="text-success text-center bg-secondary">Prix</th>
+                            <th scope="col" class="text-success text-center bg-secondary">Date de mise en ligne</th>
+                            <th scope="col" class="text-success text-center bg-secondary" colspan="2" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for annonce in pagination %}
                         <tr>
-                            <td>{{ annonce.id }}</td>
-                            <td>{{ annonce.titre }}</td>
-                            <td>{{ annonce.prix }}€</td>
-                            <td>{{ annonce.createdAt |date('d/m/Y') }}</td>
-                            <td><a href="{{path('user_car_ad_edit', {'id': annonce.id})}}" class="btn btn-success">Modifier</a></td>
-                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('user_car_ad_delete', {'id': annonce.id})}}" class="btn btn-danger">Supprimer</a></td>
+                            <td  class="col-2">{{ annonce.titre }}</td>
+                            <td  class="col-2">{{ annonce.prix }}€</td>
+                            <td class="col-2">{{ annonce.createdAt |date('d/m/Y') }}</td>
+                            <td class="col-2"><a href="{{path('user_car_ad_edit', {'id': annonce.id})}}" class="btn btn-outline-success">Modifier</a>
+                                <a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('user_car_ad_delete', {'id': annonce.id})}}" class="btn btn-outline-danger">Supprimer</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

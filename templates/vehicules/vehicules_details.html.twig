@@ -6,59 +6,59 @@
 <body class="bg-secondary">
     <div class="container-fluid">
         <section class="row justify-content-center">
-            <h1 class="col-12 mt-3 p-3 bg-dark text-success shadow-lg rounded mb-5">Détail du véhicule : </h1>
+            <h1 class="col-lg-8 mt-3 p-3 text-success shadow-lg rounded mb-5">Détail du véhicule : </h1>
             <img class="col-6 my-3" alt="" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}">
         </section>
             <div class="table-responsive-md">
-                <table class="table table-bordered table-striped table-dark text-white">
-                    <caption class="text-success fw-bold">{{annonce.titre}} {{annonce.prix}}€</caption>
+                <table class="table table-bordered text-white">
+                    <caption class="text-light text-top fw-bold">{{annonce.titre}} {{annonce.prix}}€</caption>
                     <thead>
                         <tr>
-                            <th scope="col" class="text-success fw-bold">Elements techniques</th>
-                            <th scope="col" class="text-success fw-bold">Valeurs</th>
+                            <th scope="row" class="text-success fw-bold"></th>
+                            <th scope="row" class="text-success fw-bold">Valeurs</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">Contrôle technique</th>
-                            <td>{% if annonce.ctOk == 1 %} OK
+                            <th scope="row" class="col-2 text-success">Contrôle technique</th>
+                            <td class="col-10">{% if annonce.ctOk == 1 %} OK
                             {% else %}
                                 A passer
                             {% endif %}
                             </td>
                         </tr>
                         <tr>
-                            <th class='col-4'>Kilométrage</th>
-                            <td>{{annonce.kilometrage}}</td>
+                            <th scope="row" class="col-2 text-success">Kilométrage</th>
+                            <td class="col-4">{{annonce.kilometrage}}</td>
                         </tr>                        
                         <tr>
-                            <th class='col-4'>Boite de vitesse</th>
-                            <td>{% if annonce.BoiteVitesseManuelle == 1 %} Manuelle
+                            <th scope="row" class="col-2 text-success">Boite de vitesse</th>
+                            <td class="col-4">{% if annonce.BoiteVitesseManuelle == 1 %} Manuelle
                             {% else %}
                                 Automatique
                             {% endif %}
                             </td>
                         </tr>
                         <tr> 
-                            <th class='col-4'> Nombre de portes</th>
-                            <td>{% if annonce.nombreDePortes5 == 1 %} 5 
+                            <th scope="row" class="col-2 text-success"> Nombre de portes</th>
+                            <td class="col-4">{% if annonce.nombreDePortes5 == 1 %} 5 
                             {% else %}3{% endif %}
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Puissance fiscale</th>
-                            <td>{{annonce.puissanceFiscale}} cv</td>
+                            <th scope="row" class="col-2 text-success">Puissance fiscale</th>
+                            <td class="col-4">{{annonce.puissanceFiscale}} cv</td>
                         </tr>
                         <tr>
-                            <th scope="row">Emission de Co2</th>
-                            <td>{{annonce.emissionCO2}} g/km</td>
+                            <th scope="row" class="col-2 text-success">Emission de Co2</th>
+                            <td class="col-4">{{annonce.emissionCO2}} g/km</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
                 <p class="text-success fw-bold">Besoin de plus d'informations?</p>
-                <a class="btn btn-dark text-success mb-5" href="{{path('app_form_vehicule', {'id': annonce.id})}}">Contacter le vendeur</button>
-        <a class="btn btn-outline-dark text-success mb-5" href="{{path('app_vehicules/details/all')}}">Retour</a>
+                <a class="btn btn-outline-primary text-success mb-5" href="{{path('app_form_vehicule', {'id': annonce.id})}}">Contacter le vendeur</button>
+        <a class="btn btn-outline-dark text-success mb-5" href="{{path('app_vehicules_all')}}">Retour</a>
     </div>
 </body>
 {% endblock %}

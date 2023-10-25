@@ -11,10 +11,9 @@ Encore
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .copyFiles({
-        from: './assets/images',
+        from: './assets/images', to: 'images/[path][name].[ext]'
         
         // optional target path, relative to the output dir
-        to: 'images/[path][name].[ext]',
         
         // if versioning is enabled, add the file hash too
         //to: 'images/[path][name].[hash:8].[ext]',
@@ -34,6 +33,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
 
+    .addEntry('filter', './assets/js/filterValue.js')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 

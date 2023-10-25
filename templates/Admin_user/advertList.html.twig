@@ -14,19 +14,17 @@
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Liste des annonces</h2>
                  <div class="table-responsive-md mt-5">
-                <table class="table table-bordered table-striped table-dark text-white">
+                <table class="table table-bordered text-white">
                     <thead>
                         <tr>
-                            <th scope="col">Identifiant</th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Date de mise en ligne</th>
+                            <th scope="col" class="text-success bg-secondary">Titre</th>
+                            <th scope="col" class="text-success bg-secondary">Prix</th>
+                            <th scope="col" class="text-success bg-secondary">Date de mise en ligne</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for annonce in annonces %}
                         <tr>
-                            <td>{{ annonce.id }}</td>
                             <td>{{ annonce.titre }}</td>
                             <td>{{ annonce.prix }}€</td>
                             <td>{{ annonce.createdAt |date('d/m/Y') }}</td>

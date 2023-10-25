@@ -13,7 +13,7 @@
                     </div>
                 {% endif %}
                 <div class="row justify-content-center">
-                    <h1 class="h3 mb-5 font-weight-normal text-success">Connexion</h1>
+                    <h1 class="h3 mb-5 font-weight-normal text-success shadow-lg col-lg-6">Connexion</h1>
                         {% for notice in app.flashes('notice') %}
                             <div class="alert alert-danger">
                                 {{ notice }}
@@ -31,7 +31,7 @@
                         value="{{ csrf_token('authenticate') }}"
                     />
 
-                    <button class="btn btn-lg btn-primary my-5 col-6 col-lg-2" type="submit">
+                    <button class="btn btn-lg btn-outline-info my-5 col-6 col-lg-2" type="submit">
                         Me connecter
                     </button>
                 </div>

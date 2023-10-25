@@ -16,15 +16,15 @@
                     {% endfor %}
                 <a href="{{path('app_user_add')}}" class="btn btn-light mb-3 mt-3">Ajouter un utilisateur</a>
                  <div class="table-responsive-md mt-2">
-                <table class="table table-bordered table-striped table-dark text-white text-center">
+                <table class="table table-bordered text-white text-center">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-success">Identifiant</th>
-                            <th scope="col" class="text-success">Nom</th>
-                            <th scope="col" class="text-success">Prénom</th>
-                            <th scope="col" class="text-success">E-mail</th>
-                            <th scope="col" class="text-success">Poste</th>
-                            <th scope="col" class="text-success" colspan="2" class="text-center">Action</th>
+                            <th scope="col" class="bg-secondary text-success">Identifiant</th>
+                            <th scope="col" class="bg-secondary text-success">Nom</th>
+                            <th scope="col" class="bg-secondary text-success">Prénom</th>
+                            <th scope="col" class="bg-secondary text-success">E-mail</th>
+                            <th scope="col" class="bg-secondary text-success">Poste</th>
+                            <th scope="col" class="bg-secondary text-success" colspan="2" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,8 +35,8 @@
                             <td>{{ user.prenom }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.poste.libelle }}</td>
-                            <td><a href="{{path('admin_userModify_selected', {'id': user.id})}}" class="btn btn-success">Modifier</a></td>
-                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('app_user_delete',{'id': user.id})}}" class="btn btn-danger">Supprimer</a></td>
+                            <td><a href="{{path('admin_userModify_selected', {'id': user.id})}}" class="btn btn-outline-success">Modifier</a></td>
+                            <td><a onclick="return confirm('Confirmez-vous la suppression?')" href="{{path('app_user_delete',{'id': user.id})}}" class="btn btn-outline-danger">Supprimer</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
