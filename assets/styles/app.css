@@ -10837,4 +10837,9 @@ ul li {
 }
 .emailForm, .passwordForm {
   width: 30%;
+}
+
+.formu-contact {
+  display: inline-block;
+  margin-right: 10px;
 }/*# sourceMappingURL=app.css.map */

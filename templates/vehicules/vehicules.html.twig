@@ -7,12 +7,12 @@
    
     <div class="container-fluid">
         <section class="row justify-content-center">
-            <h1 class="col-12 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos véhicules d'occasion</h1>
-            <div class="row">
+            <h1 class="col-lg-8 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos véhicules d'occasion</h1>
+            <div class="row justify-content-center">
 
-                <form id="filters">
+                <form id="filters" class="col-lg-8">
                     <div class="containerFilters shadow-lg">
-                        <p>
+                        <p class="mx-5">
                             <label for="km" class="form-label text-light p-3">Kilométrage
                                 <input type="range" class="form-range pi_input" min="0" max="250000" step="5000" />
                                 <output class="value">125000</output>
@@ -35,18 +35,21 @@
                 </form>
                 
             </div>
-            {% for annonce in pagination %} 
-              <div class="card bg-primary text-white mb-5 mx-5" style="width: 18rem;">
-                    <img src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" class="card-img-top h-50" alt="photo">
-                    <div class="card-body">
-                        <h5 class="card-title text-success fw-semibold titleCard">{{annonce.titre}}</br></br></h5>
-                        <p class="card-text"></p>
-                        <p class="card-text fw-semibold border-top">Prix : {{ annonce.prix }}€ </p>
-                        <a href="{{ path('app_vehicules_details', {'id': annonce.id}) }}" class="btn details text-success fw-semibold btn-outline-secondary d-flex justify-content-center ">Détails</a> 
-                    </div>
+            <div class="row justify-content-center">
+
+                {% for annonce in pagination %} 
+
+                <div class="col-4 card bg-primary text-white mb-5 mx-5" style="width: 18rem;">
+                        <img src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" class="card-img-top h-50" alt="photo">
+                        <div class="card-body">
+                            <h5 class="card-title text-success fw-semibold titleCard">{{annonce.titre}}</br></br></h5>
+                            <p class="card-text"></p>
+                            <p class="card-text fw-semibold border-top">Prix : {{ annonce.prix }}€ </p>
+                            <a href="{{ path('app_vehicules_details', {'id': annonce.id}) }}" class="btn details text-success fw-semibold btn-outline-secondary d-flex justify-content-center ">Détails</a> 
+                        </div>
                 </div>
-            {% endfor %}
-            
+                {% endfor %}
+            </div>
             {{ knp_pagination_render(pagination) }}
 
         </section>

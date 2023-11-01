@@ -17,15 +17,25 @@ class Contact
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(min:2, max:50)]
-    private ?string $Titre = null;
+    private ?string $titre = null;
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(min:2, max:50)]
-    private ?string $Nom = null;
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre nom ne peut pas contenir un nombre'
+    )]
+    private ?string $nom = null;
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(min:2, max:50)]
-    private ?string $Prenom = null;
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre prénom ne peut pas contenir un nombre'        
+    )]
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 180)]
     #[Assert\Email()]
@@ -55,36 +65,36 @@ class Contact
 
     public function getTitre(): ?string
     {
-        return $this->Titre;
+        return $this->titre;
     }
 
     public function setTitre(string $Titre): self
     {
-        $this->Titre = $Titre;
+        $this->titre = $Titre;
 
         return $this;
     }
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
     public function setNom(string $Nom): self
     {
-        $this->Nom = $Nom;
+        $this->nom = $Nom;
 
         return $this;
     }
 
     public function getPrenom(): ?string
     {
-        return $this->Prenom;
+        return $this->prenom;
     }
 
     public function setPrenom(string $Prenom): self
     {
-        $this->Prenom = $Prenom;
+        $this->prenom = $Prenom;
 
         return $this;
     }
