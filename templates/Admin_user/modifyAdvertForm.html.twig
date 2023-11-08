@@ -14,8 +14,8 @@
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Modifier l'annonce</h2> 
                 {% for notice in app.flashes('notice') %}
-                    <div class="alert alert-info">
-                        {{ notice }}
+                    <div>
+                        {{ block ("alertSuccess", "config/common_block.html.twig") }}
                     </div>
                 {% endfor %}
                 <div class="text-white">

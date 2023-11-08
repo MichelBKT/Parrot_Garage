@@ -8,13 +8,10 @@ use App\Form\EditavisType;
 use App\Repository\AnnonceRepository;
 use App\Repository\AvisclientRepository;
 use App\Repository\HoraireRepository;
-use App\Service\ImageRedi;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request as BrowserKitRequest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -73,7 +70,7 @@ class MainUserController extends AbstractController
                 }
           $entityManager->persist($annonce);
           $entityManager->flush();
-          return $this->redirectToRoute('user_ad_manager');  
+          $this->addFlash('notice', 'Annonce ajoutée avec succès!'); 
         }
         return $this->render('Admin_user/addAdvertForm.html.twig',[
             'horaires'=>$horaireRepository->findAll(),
@@ -96,7 +93,7 @@ class MainUserController extends AbstractController
                 $folder = 'voiture';
 
                 // on appelle le service d'ajout
-                $file = $pictureService->add($photo, $folder, 600, 300);
+                $file = $pictureService->add($photo, $folder, 350, 300);
                 $annonce->setPhoto($file);
             }
             $entityManager->persist($annonce);
@@ -112,16 +109,22 @@ class MainUserController extends AbstractController
         ]);
     } 
     #[Route('/user/car/ad/delete/{id}', name: 'user_car_ad_delete', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
-    public function deleteAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository, EntityManagerInterface $entityManager,Annonce $annonce): Response
+    public function deleteAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository, Request $request, EntityManagerInterface $entityManager,Annonce $annonce, PaginatorInterface $paginator): Response
     {
         $form= $this->createForm(AdvertType::class, $annonce);
         $entityManager->remove($annonce);
         $entityManager->flush();
         $this->addFlash('notice', 'Suppression effectuée avec succès!');
 
+        $pagination = $paginator->paginate(
+            $annonceRepository->paginationQuery(),
+            $request->query->getInt('page', 1),
+            10
+        );
         return $this->render('Admin_user/advertManager.html.twig', [
-            'horaires'=> $horaireRepository->findAll(),
-            'annonces'=> $annonceRepository->findAll(),
+            'horaires' => $horaireRepository->findAll(),
+            'annonces' => $annonceRepository->findAll(),
+            'pagination' => $pagination,
             'formView' => $form->createView()
         ]);
     } 
@@ -141,7 +144,7 @@ class MainUserController extends AbstractController
             'avisClients' => $avisClientRepository->findAll(),
         ]);
     }
-    #[Route('/user/comments/edit/{id}', name: 'user_comments_edit', requirements: ['id' => '\d+'], methods: ['GET'])]
+    #[Route('/user/comments/edit/{id}', name: 'user_comments_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
     public function editComments(HoraireRepository $horaireRepository, Request $request, EntityManagerInterface $entityManager,Avisclient $avisclient ): Response
     {
         $form= $this->createForm(EditavisType::class, $avisclient);

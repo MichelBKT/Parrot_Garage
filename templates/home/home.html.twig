@@ -5,7 +5,7 @@
 {% block body %}
 <body class="bg-secondary">
     <div class="row justify-content-center">
-        <h1 class="col-lg-6 my-5 p-3 text-success shadow-lg rounded">Derniers arrivages véhicules d'occasion</h1>
+        <h1 class="col-lg-10 my-5 p-3 text-success shadow-lg rounded">Derniers arrivages véhicules d'occasion</h1>
     </div>
         <div class="container">
             <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
@@ -49,7 +49,7 @@
 
     <section class="row mt-5 justify-content-center">
 
-        <h1 class="col-lg-8 m-5 p-3 text-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
+        <h1 class="col-lg-10 m-5 p-3 text-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
         <div class="description col-lg-4 mt-3 p-lg-5">
             <p class="description-welcome text-light">"Toute l'équipe est à votre disposition pour vous accompagner et vous conseiller sur l'achat d'un véhicule
             d'occasion ou pour la réparation et l'entretien de votre véhicule. N'hésitez-pas à nous rendre visite ou nous contacter pour plus de renseignements."</p>
@@ -108,8 +108,8 @@
             </div>
         </section>
         <section class="row justify-content-center">
-            <h1 class="col-12 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos services</h1>
-            <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid col-10 w-25 mb-5" alt="illustration_services">
+            <h1 class="col-lg-10 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos services</h1>
+            <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid w-25 mb-5" alt="illustration_services">
             <p class="services col-10 p-3 text-white text-center shadow-lg rounded">
                 {{ block ("bichevronright", "config/common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "config/common_block.html.twig")}} </br></br>
                 Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. Consultez nos annonces en ligne.</br></br>

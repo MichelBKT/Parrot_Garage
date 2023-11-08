@@ -47,6 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Service::class)]
     private Collection $service;
 
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -250,4 +251,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 }

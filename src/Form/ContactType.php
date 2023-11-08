@@ -41,8 +41,7 @@ class ContactType extends AbstractType
             ])
             ->add('objet', TextType::class, [
                 'label_attr' => [ 'class' => 'text-light'],
-            ])
-                
+            ])  
             ->add('sujet', TextareaType::class, [
                 'label_attr' => [ 'class' => 'text-light'],
                 'attr' => [ 'class' => 'form-control-lg']

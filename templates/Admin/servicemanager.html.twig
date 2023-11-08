@@ -10,9 +10,9 @@
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Gestion des services / entretiens</h2>
                 {% for notice in app.flashes('notice') %}
-                    <div class="alert alert-info">
-                        {{ notice }}
-                    </div>
+                <div>
+                    {{ block ("alertSuccess", "config/common_block.html.twig") }}
+                </div>
                 {% endfor %}
                 <a href="{{path('app_service_manager_add')}}" class="btn btn-outline-light mb-3 mt-3">Ajouter un service</a>
                  <div class="table-responsive-md mt-2">

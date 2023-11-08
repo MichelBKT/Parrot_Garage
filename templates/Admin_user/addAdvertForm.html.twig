@@ -18,8 +18,8 @@
                 <h2 class="text-success p-3 border-bottom">Ajouter une annonce</h2>
                 {% endif %}
                 {% for notice in app.flashes('notice') %}
-                    <div class="alert alert-info">
-                        {{ notice }}
+                    <div>
+                        {{ block ("alertSuccess", "config/common_block.html.twig") }}
                     </div>
                 {% endfor %}
                 <div class="text-white">

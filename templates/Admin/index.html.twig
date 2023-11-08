@@ -9,13 +9,32 @@
     {% include "partials/adminNav.html.twig" %}
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3">Bienvenue sur votre espace personnel</br>{{app.user.prenom}} {{app.user.nom}}, {{app.user.poste.libelle}}</h2>
-                <img src="{{asset('build/images/logo_simple.png')}}" alt="logo" class="img-thumbnail col-4 me-auto p-2">
-                <p class="bg-light rounded p-3 m-5"> Les différents menus à gauche de votre écran vous permettront d'administrer le site web.</br> Vous bénéficiez de tous les droits
-                pour modifier directement les informations affichées sur le site.</br> Vous avez le choix entre 5 catégories administrables.</br> Pour rappel, seules les 
-                2 dernières catégories (Annonces et Avis clients) ne sont visibles par les employés.</br> Pour chaque item, vous pouvez consulter les données enregistrées
-                dans le système. Cliquer sur "gérer..." vous permettra d'ajouter, modifier ou supprimer un élément de la catégorie. </br> Laissez-vous guider!</p>
-                <img src="{{asset('build/images/logo_simple.png')}}" alt="logo" class="img-thumbnail col-4 me-auto p-2">
-
+                <h3 class="text-success">Messagerie</h3>
+                <p class="text-success">>>>> {{contact|length}} message(s) reçu(s) dont 
+                 {{(contact|length) - (contactReading|length)}} message(s) non répondu(s)   
+                 </p>
+                {% for contacts in contact %}
+                <div class="text-success col-lg-8 shadow-lg rounded">
+                    {% if contacts.lu == 0 %}<a href="https://mailtrap.io/signin" target="blank" class="text-success"><svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 512 512" class="Response"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>.Response{fill:#ffff00; text-align: }</style><path d="M205 34.8c11.5 5.1 19 16.6 19 29.2v64H336c97.2 0 176 78.8 176 176c0 113.3-81.5 163.9-100.2 174.1c-2.5 1.4-5.3 1.9-8.1 1.9c-10.9 0-19.7-8.9-19.7-19.7c0-7.5 4.3-14.4 9.8-19.5c9.4-8.8 22.2-26.4 22.2-56.7c0-53-43-96-96-96H224v64c0 12.6-7.4 24.1-19 29.2s-25 3-34.4-5.4l-160-144C3.9 225.7 0 217.1 0 208s3.9-17.7 10.6-23.8l160-144c9.4-8.5 22.9-10.6 34.4-5.4z"/></svg></a>{% endif %}
+                    <ul class="text-success">Expéditeur:
+                        <li class="text-light">{{contacts.titre}} {{contacts.prenom}} {{contacts.nom}}</li>
+                        <li class="text-light">{{contacts.email}}</li>
+                    </ul>
+                    <ul class="text-success">Message envoyé le {{contacts.createdAt | date('d-M-Y h:i:s')}}>>>>Réponse envoyée
+                    
+                        <a href= {% if contacts.lu == 1 %} "{{ path('admin_unread', {id: contacts.id}) }}" 
+                                 {% else %} "{{ path('admin_read', {id: contacts.id}) }}"
+                                 {% endif %}
+                        >
+                            <input href="#" type="checkbox" {% if contacts.lu == 1 %} checked {% endif %}/>
+                        </a>
+                        {% if contacts.lu == 1 %}<a href="{{ path('admin_contactDelete', {id: contacts.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ff0000}</style><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>{% endif %}
+                        <li class="text-success ">Objet: {{contacts.objet}} </li>
+                        <li class="text-light mx-5">{{contacts.sujet}}</li>
+                        
+                    </ul>
+                </div>
+                {% endfor %}
             </main>    
         </div>
     </div>

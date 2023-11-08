@@ -10842,4 +10842,12 @@ ul li {
 .formu-contact {
   display: inline-block;
   margin-right: 10px;
+}
+
+.icon-mail {
+  background: #e6de01;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
 }/*# sourceMappingURL=app.css.map */

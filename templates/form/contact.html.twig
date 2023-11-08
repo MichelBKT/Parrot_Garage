@@ -7,43 +7,38 @@
     <div class="row my-5 mx-5 justify-content-center">
         <h2 class="text-success p-3 my-5 shadow-lg col-8">Formulaire de contact</h2>
         {% for notice in app.flashes('notice') %}
-            <div class="col-10 alert alert-info">
-                {{ notice }}
+            <div>
+                {{ block ("alertSuccess", "config/common_block.html.twig") }}
             </div>
         {% endfor %}
-        <div class="row row-cols-8 col-lg-6 justify-content-center">
-        {{ form_start(formView) }}
-        <div class="formu-contact col-lg-2">
-            {{ form_row(formView.titre) }}
-        </div>
-        <div class="formu-contact col-lg-4">
-            {{ form_row(formView.nom) }}
-        </div>
-        <div class="formu-contact col-lg-4">
-            {{ form_row(formView.prenom) }}
-        </div>
-        <div class="formu-contact col-lg-4">
-            {{ form_row(formView.email) }}
-        </div>
-        <div class="formu-contact col-lg-6">
-        {% if annonces.titre is defined %}
-                {{ form_row(formView.objet, {
-                    value : annonces.titre
-                })}}
-        {% else %}
-            {{ form_row(formView.objet) }}
-        {% endif %}
-        
-        
-        </div>
-            {{ form_row(formView.sujet) }}
-            <button type="submit" class="btn btn-outline-info p-2 mt-3">Envoyer</button>
-            <a class="btn btn-outline-success p-2 mt-3" href="{{path('app_home')}}">Retour</a>
+        <div class="row row-cols-10 col-lg-8 justify-content-center">
+            {{ form_start(formView) }}
+                <div class="formu-contact col-lg-2">
+                    {{ form_row(formView.titre) }}
+                </div>
+                <div class="formu-contact col-lg-4">
+                    {{ form_row(formView.nom) }}
+                </div>
+                <div class="formu-contact col-lg-4">
+                    {{ form_row(formView.prenom) }}
+                </div>
+                <div class="formu-contact col-lg-4">
+                    {{ form_row(formView.email) }}
+                </div>
+                <div class="formu-contact col-lg-6">
+                    {% if annonces.titre is defined %}
+                            {{ form_row(formView.objet, {
+                                value : annonces.titre
+                            })}}
+                    {% else %}
+                        {{ form_row(formView.objet) }}
+                    {% endif %}
+                </div>
+                    {{ form_row(formView.sujet) }}
+                    <button type="submit" class="btn btn-outline-info p-2 mt-3">Envoyer</button>
+                    <a class="btn btn-outline-success p-2 mt-3" href="{{path('app_home')}}">Retour</a>
         {{ form_end(formView) }}
         </div>
     </div>
-    <pre>
-        {{ dump() }}
-    </pre>
 </body>
 {% endblock %}

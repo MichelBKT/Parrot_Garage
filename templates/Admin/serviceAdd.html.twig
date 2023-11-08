@@ -10,9 +10,9 @@
             <main class="col-lg-8 rounded p-2">
                 {% if app.request.attributes.get('_route') == 'app_service_manager_add' %}
                     {% for notice in app.flashes('notice') %}
-                        <div class="alert alert-info">
-                            {{ notice }}
-                        </div>
+                    <div>
+                        {{ block ("alertSuccess", "config/common_block.html.twig") }}
+                    </div>
                     {% endfor %}
                 
                     <h2 class="text-success p-3 border-bottom">Ajouter un service</h2>
@@ -23,21 +23,19 @@
                         {{ form_end(form) }}
 
                     {% else %}
-            {% if app.request.attributes.get('_route') == 'app_entretien_manager_add' %}
-                            <h2 class="text-success p-3 border-bottom">Ajouter un entretien</h2>
-                {% for notice in app.flashes('notice') %}
-                    <div class="alert alert-info">
-                        {{ notice }}
-                    </div>
-                {% endfor %}
-
+                    {% if app.request.attributes.get('_route') == 'app_entretien_manager_add' %}
+                        <h2 class="text-success p-3 border-bottom">Ajouter un entretien</h2>
+                        {% for notice in app.flashes('notice') %}
+                        <div>
+                            {{ block ("alertSuccess", "config/common_block.html.twig") }}
+                        </div>
+                        {% endfor %}
                             {{ form_start(form) }}
                                 {{ form_row(form.libelle) }}
                                 {{ form_row(form.user)}}
                                 <button type="submit" class="btn btn-success">Ajouter</button>
                             {{ form_end(form) }}
-
-                        {% endif %}  
+                    {% endif %}  
                 {% endif %}  
             </main>    
         </div>

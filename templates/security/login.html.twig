@@ -15,9 +15,9 @@
                 <div class="row justify-content-center">
                     <h1 class="h3 my-5 font-weight-normal text-success shadow-lg col-lg-6">Connexion</h1>
                         {% for notice in app.flashes('notice') %}
-                            <div class="col-8 alert alert-danger">
-                                {{ notice }}
-                            </div>   
+                        <div>
+                            {{ block ("alertDanger", "config/common_block.html.twig") }}
+                        </div>  
                         {% endfor %}
                 <div class="row justify-content-center">         
                     <label for="inputEmail" class="col col-lg-2">Email</label>

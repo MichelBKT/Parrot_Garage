@@ -58,6 +58,9 @@ class Contact
     #[Assert\NotBlank()]
     private ?string $sujet = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $Lu = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -146,4 +149,18 @@ class Contact
 
         return $this;
     }
+
+    public function isLu(): ?bool
+    {
+        return $this->Lu;
+    }
+
+    public function setLu(?bool $Lu): static
+    {
+        $this->Lu = $Lu;
+
+        return $this;
+    }
+
+
 }
