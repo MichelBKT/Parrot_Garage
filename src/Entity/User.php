@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,26 +33,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'User')]
+    #[ORM\ManyToOne]
     private ?Poste $poste = null;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Annonce::class)]
-    private Collection $user;
-
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Entretien::class)]
-    private Collection $entretien;
-
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Service::class)]
-    private Collection $service;
-
-
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-        $this->user = new ArrayCollection();
-        $this->entretien = new ArrayCollection();
-        $this->service = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -160,96 +141,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->poste = $poste;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, annonce>
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
-
-    public function addUser(annonce $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-            $user->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(annonce $user): self
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getUser() === $this) {
-                $user->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-       /**
-     * @return Collection<int, entretien>
-     */
-    public function getEntretien(): Collection
-    {
-        return $this->entretien;
-    }
-
-    public function addEntretien(entretien $entretien): self
-    {
-        if (!$this->entretien->contains($entretien)) {
-            $this->entretien->add($entretien);
-            $entretien->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEntretien(entretien $entretien): self
-    {
-        if ($this->entretien->removeElement($entretien)) {
-            // set the owning side to null (unless already changed)
-            if ($entretien->getUser() === $this) {
-                $entretien->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, service>
-     */
-    public function getService(): Collection
-    {
-        return $this->service;
-    }
-
-    public function addService(service $service): self
-    {
-        if (!$this->service->contains($service)) {
-            $this->service->add($service);
-            $service->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeService(service $service): self
-    {
-        if ($this->service->removeElement($service)) {
-            // set the owning side to null (unless already changed)
-            if ($service->getUser() === $this) {
-                $service->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    }   
 
 }

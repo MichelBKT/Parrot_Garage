@@ -10719,7 +10719,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-h1, .h1, h2, .h2, .hours {
+h1, .h1, h2, .h2, .hours, .offcanvas-title, .card-header {
   font-family: "Audiowide", cursive;
 }
 

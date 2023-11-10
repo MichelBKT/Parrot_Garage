@@ -1,47 +1,52 @@
-<aside class="col-lg-3 col-6 mx-3 my-3">
-    <article class="card mb-3">
-        <div class="card-header">
-            Utilisateurs
-        </div>
-        <div class="card-body">
-            <p><a href="{{path('app_user')}}"> Liste des utilisateurs<p></a>
-            <p><a href="{{path('app_usermanager')}}"> Gérer les utilisateurs<p></a>
-        </div>
-    </article>
-    <article class="card mb-3">
-        <div class="card-header">
-            Horaires
-        </div>
-        <div class="card-body">
-            <p><a href="{{path('admin_openHours')}}"> Voir les horaires d'ouverture<p></a>
-            <p><a href="{{path('admin_modifyOpenHours')}}"> Gérer les horaires d'ouverture<p></a>
-        </div>
-    </article>
-    <article class="card mb-3">
-        <div class="card-header">
-            Services / entretiens       
-        </div>
-        <div class="card-body">
-            <p><a href="{{path('admin_services')}}"> Liste des services / entretiens<p></a>
-            <p><a href="{{path('app_service_manager')}}"> Gérer les services / entretiens<p></a>
-        </div>
-    </article>
+{% if is_granted('ROLE_ADMIN') %}
+    {% include "partials/offcanvasNav.html.twig" %}
         <article class="card mb-3">
-        <div class="card-header">
-            Annonces       
-        </div>
-        <div class="card-body">
-            <p><a href="{{path('user_ad')}}"> Liste des annonces<p></a>
-            <p><a href="{{path('user_ad_manager')}}"> Gérer les annonces<p></a>
-        </div>
-    </article>
+            <div class="card-header bg-success">
+                Utilisateurs
+            </div>
+            <div class="card-body">
+                <p><a href="{{path('app_user')}}"> Liste des utilisateurs</a></p>
+                <p><a href="{{path('app_usermanager')}}"> Gérer les utilisateurs</a></p>
+            </div>
+        </article>
         <article class="card mb-3">
-        <div class="card-header">
-            Avis clients       
-        </div>
-        <div class="card-body">
-            <p><a href="{{path('user_comments')}}"> Liste des avis clients<p></a>
-            <p><a href="{{path('user_comments_manager')}}"> Gérer les avis clients<p></a>
-        </div>
-    </article>
-</aside>
+            <div class="card-header bg-success">
+                Horaires
+            </div>
+            <div class="card-body">
+                <p><a href="{{path('admin_openHours')}}"> Voir les horaires d'ouverture</a></p>
+                <p><a href="{{path('admin_modifyOpenHours')}}"> Gérer les horaires d'ouverture</a></p>
+            </div>
+        </article>
+        <article class="card mb-3">
+            <div class="card-header bg-success">
+                Services / entretiens       
+            </div>
+            <div class="card-body">
+                <p><a href="{{path('admin_services')}}"> Liste des services / entretiens</a></p>
+                <p><a href="{{path('app_service_manager')}}"> Gérer les services / entretiens</a></p>
+            </div>
+        </article>
+        <article class="card mb-3">
+            <div class="card-header bg-success">
+                Annonces       
+            </div>
+            <div class="card-body">
+                <p><a href="{{path('user_ad')}}"> Liste des annonces</a></p>
+                <p><a href="{{path('user_ad_manager')}}"> Gérer les annonces</a></p>
+            </div>
+        </article>
+        <article class="card mb-3">
+            <div class="card-header bg-success">
+                Avis clients       
+            </div>
+            <div class="card-body">
+                <p><a href="{{path('user_comments')}}"> Liste des avis clients</a></p>
+                <p><a href="{{path('user_comments_manager')}}"> Gérer les avis clients</a></p>
+            </div>
+        </article>
+    </aside>
+    </div>
+{% endif %}
+
+

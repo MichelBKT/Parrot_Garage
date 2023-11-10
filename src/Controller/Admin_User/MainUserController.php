@@ -4,9 +4,11 @@ namespace App\Controller\Admin_User;
 
 use App\Entity\Annonce;
 use App\Entity\Avisclient;
+use App\Entity\Contact;
 use App\Form\EditavisType;
 use App\Repository\AnnonceRepository;
 use App\Repository\AvisclientRepository;
+use App\Repository\ContactRepository;
 use App\Repository\HoraireRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,13 +21,53 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainUserController extends AbstractController
 {
     #[Route('/user', name: 'user_')]
-    public function index(HoraireRepository $horaireRepository): Response
+    public function index(HoraireRepository $horaireRepository, ContactRepository $contactRepository): Response
     {
         return $this->render('Admin_user/index.html.twig', [
             'horaires' => $horaireRepository->findAll(),
+            'contactReading' => $contactRepository -> findBy(['Lu' => '1']),
+            'contact' => $contactRepository -> findAll(),
+
         ]);
     }
+    #[Route('/user/read/{id}', name: 'user_read', methods: ['GET', 'POST'])]
+    public function read(HoraireRepository $horaireRepository, ContactRepository $contactRepository, Contact $contact, EntityManagerInterface $manager): Response
+    {
+        $contact->setLu(true);
+        $manager->persist($contact);
+        $manager->flush();
 
+        return $this->render('Admin_user/index.html.twig', [
+            'horaires' => $horaireRepository -> findAll(),
+            'contactReading' => $contactRepository -> findBy(['Lu' => '1']),
+            'contact' => $contactRepository -> findAll(),
+        ]);
+    }
+    #[Route('/user/unread/{id}', name: 'user_unread', methods: ['GET', 'POST'])]
+    public function unread(HoraireRepository $horaireRepository, ContactRepository $contactRepository, Contact $contact, EntityManagerInterface $manager): Response
+    {
+        $contact->setLu(false);
+        $manager->persist($contact);
+        $manager->flush();
+
+        return $this->render('Admin_user/index.html.twig', [
+            'horaires' => $horaireRepository -> findAll(),
+            'contactReading' => $contactRepository -> findBy(['Lu' => '1']),
+            'contact' => $contactRepository -> findAll(),
+        ]);
+    }
+    #[Route('/user/contact/delete/{id}', name: 'user_contactDelete', methods: ['GET', 'POST'])]
+    public function contactDelete(HoraireRepository $horaireRepository, ContactRepository $contactRepository, Contact $contact, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($contact);
+        $manager->flush();
+
+        return $this->render('Admin_user/index.html.twig', [
+            'horaires' => $horaireRepository -> findAll(),
+            'contactReading' => $contactRepository -> findBy(['Lu' => '1']),
+            'contact' => $contactRepository -> findAll(),
+        ]);
+    }
     #[Route('/user/ad', name: 'user_ad')]
     public function showAdvert(HoraireRepository $horaireRepository, AnnonceRepository $annonceRepository): Response
     {

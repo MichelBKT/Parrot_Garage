@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\AnnonceRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AnnonceRepository::class)]
@@ -29,7 +28,7 @@ class Annonce
     }
 
 
-    #[ORM\ManyToOne(inversedBy: 'User')]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

@@ -16,16 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/admin', name: 'admin_')]
-    public function index(HoraireRepository $horaireRepository, ContactRepository $contactRepository): Response
-    {
-        return $this->render('Admin/index.html.twig', [
-            'horaires' => $horaireRepository -> findAll(),
-            'contactReading' => $contactRepository -> findBy(['Lu' => '1']),
-            'contact' => $contactRepository -> findAll(),
 
-        ]);
-    }
     #[Route('/admin/read/{id}', name: 'admin_read', methods: ['GET', 'POST'])]
     public function read(HoraireRepository $horaireRepository, ContactRepository $contactRepository, Contact $contact, EntityManagerInterface $manager): Response
     {
@@ -65,6 +56,7 @@ class MainController extends AbstractController
         ]);
     }
 
+   
     #[Route('/admin/openHours', name: 'admin_openHours')]
     public function showOpenHours(HoraireRepository $horaireRepository): Response
     {

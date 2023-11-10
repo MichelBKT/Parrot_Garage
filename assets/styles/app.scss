@@ -8,14 +8,13 @@ $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 
-h1, h2, .hours{
+h1, h2, .hours, .offcanvas-title, .card-header{
     font-family: 'Audiowide', cursive;
 }
 
 h1, h2{
     text-align: center;
 }
-
 .nav-link.active {
   border-bottom: solid 2px $success;
 }

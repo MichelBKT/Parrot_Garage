@@ -18,13 +18,6 @@ class Poste
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'Poste_id', targetEntity: User::class)]
-    private Collection $poste;
-
-    public function __construct()
-    {
-        $this->poste = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -43,33 +36,4 @@ class Poste
         return $this;
     }
 
-    /**
-     * @return Collection<int, user>
-     */
-    public function getPoste(): Collection
-    {
-        return $this->poste;
-    }
-
-    public function addPoste(User $poste): self
-    {
-        if (!$this->poste->contains($poste)) {
-            $this->poste->add($poste);
-            $poste->setposte($this);
-        }
-
-        return $this;
-    }
-
-    public function removePoste(User $poste): self
-    {
-        if ($this->poste->removeElement($poste)) {
-            // set the owning side to null (unless already changed)
-            if ($poste->getPoste() === $this) {
-                $poste->setPoste(null);
-            }
-        }
-
-        return $this;
-    }
 }
