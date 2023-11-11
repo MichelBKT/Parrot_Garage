@@ -5,11 +5,14 @@
 {% block body %}
 <body class="bg-primary">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row row-cols-4 justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
-            {% include "partials/adminNav.html.twig" %}
-            {% else %}
-            {% include "partials/userNav.html.twig" %}    
+                {% include "partials/adminNav.html.twig" %}
+                </aside>
+                </div>
+            {% else %} {% include "partials/userNav.html.twig" %}   
+                        </aside>
+                        </div> 
             {% endif %}
             <main class="col-lg-8 rounded p-2">
                 <h2 class="text-success p-3 border-bottom">Modifier l'annonce</h2> 

@@ -1,23 +1,25 @@
 {% if is_granted('ROLE_USER') %}
     {% include "partials/offcanvasNav.html.twig" %}
-        <article class="card mb-3">
-            <div class="card-header bg-success">
-                Annonces       
-            </div>
-            <div class="card-body">
-                <p><a href="{{path('user_ad')}}"> Liste des annonces<p></a>
-                <p><a href="{{path('user_ad_manager')}}"> Gérer les annonces<p></a>
-            </div>
-        </article>
+        <aside>
             <article class="card mb-3">
-            <div class="card-header bg-success">
-                Avis clients       
-            </div>
-            <div class="card-body">
-                <p><a href="{{path('user_comments')}}"> Liste des avis clients<p></a>
-                <p><a href="{{path('user_comments_manager')}}"> Gérer les avis clients<p></a>
-            </div>
-        </article>
-    </aside>
-    </div>
+                <div class="card-header bg-success">
+                    Annonces       
+                </div>
+                <div class="card-body">
+                    <p><a href="{{path('user_ad')}}"> Liste des annonces<p></a>
+                    <p><a href="{{path('user_ad_manager')}}"> Gérer les annonces<p></a>
+                </div>
+            </article>
+                <article class="card mb-3">
+                <div class="card-header bg-success">
+                    Avis clients       
+                </div>
+                <div class="card-body">
+                    <p><a href="{{path('user_comments')}}"> Liste des avis clients<p></a>
+                    <p><a href="{{path('user_comments_manager')}}"> Gérer les avis clients<p></a>
+                </div>
+            </article>
+        </aside>
+    </div>  
+</div>
 {% endif %}

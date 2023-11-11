@@ -11,7 +11,10 @@ $box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.37);
 h1, h2, .hours, .offcanvas-title, .card-header{
     font-family: 'Audiowide', cursive;
 }
-
+.cardNav{
+  border: 1px solid black;
+  border-radius: 5px black;
+}
 h1, h2{
     text-align: center;
 }
