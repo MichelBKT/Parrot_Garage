@@ -5,8 +5,7 @@
 {% block body %}
 
 <body class="bg-secondary">
-   
-    <div class="container-fluid">
+    <main class="container-fluid">
         <section class="row justify-content-center">
             <h1 class="col-lg-8 mt-3 p-3 text-success shadow-lg rounded mb-5">Entretiens et services</h1>
             <img src="{{ asset('build/images/mécanique-auto.jpg')}}" class="col-10 w-50 mb-5" alt="photo_atelier">
@@ -14,14 +13,19 @@
         <section class="entretiens row justify-content-center">
             <h2 class="col-6 bg-success shadow-lg rounded my-5">Entretiens</h2>
             <div class="entretiens-presentation row justify-content-center">
-                <p class="entretiens-text col-lg-6 p-3 text-white shadow-lg rounded">Confier régulièrement votre véhicule à votre concessionnaire Parrot pour l'entretien et les révisions vous permet de le conserver dans un état optimal. L'entretien permet de 
-                garantir les performances de votre moteur, d'améliorer la consommation de carburant et de réduire les émissions de CO2. Outre réaliser des économies, il vous permet de rester
-                serein, confiant dans la sécurité et la fiabilité de votre automobile.</br>Vous bénéficierez de l'expertise de techniciens qualifiés, de pièces d'origine.</br><strong>Nous recommandons une révision annuelle
-                ou tous les 30 000 km.</strong></br>
-                Votre réparateur Parrot agréé contrôle les éléments suivants :</p>
+                <p class="entretiens-text col-lg-6 p-3 text-white shadow-lg rounded">Confier régulièrement votre véhicule à votre
+                    concessionnaire Parrot pour l'entretien et les révisions vous permet de le conserver dans un état optimal.
+                    L'entretien permet de garantir les performances de votre moteur, d'améliorer la consommation de carburant et de
+                    réduire les émissions de CO2. Outre réaliser des économies, il vous permet de rester serein, confiant dans la
+                    sécurité et la fiabilité de votre automobile.</br>Vous bénéficierez de l'expertise de techniciens qualifiés, de 
+                    pièces d'origine.</br><strong>Nous recommandons une révision annuelle ou tous les 30 000 km.</strong></br>Votre 
+                    réparateur Parrot agréé contrôle les éléments suivants :
+                </p>
                 <ul class="entretiens-list col-lg-8 row row-cols-2 p-3 text-white shadow-lg rounded">
                     {% for entretien in entretiens %}
-                    <li class="col-lg-4 p-3 p-lg-0">{{ block ("bichevronright", "config/common_block.html.twig")}} {{ entretien.libelle }}</li>  
+                        <li class="col-lg-4 p-3 p-lg-0">
+                            {{ block ("bichevronright", "config/common_block.html.twig")}} {{ entretien.libelle }}
+                        </li>  
                     {% endfor %}
                 </ul>
             </div>
@@ -29,17 +33,20 @@
         <section class="services row justify-content-center">
             <h2 class="col-6 bg-success shadow-lg rounded my-5">Services</h2>
             <div class="services-presentation row justify-content-center">
-                <p class="services-text col-lg-6 p-3 text-white shadow-lg rounded">Parrot Automobiles peut vous prêter un véhicule de courtoisie en cas d'immobilisation de plus d'une journée.
-                    Tous types de réparations peuvent être effectuées multi-marques.</br> Voici une liste non exhaustive des prestations :</p>
+                <p class="services-text col-lg-6 p-3 text-white shadow-lg rounded">Parrot Automobiles peut vous prêter un véhicule de 
+                        courtoisie en cas d'immobilisation de plus d'une journée. Tous types de réparations peuvent être effectuées 
+                        multi-marques.</br> Voici une liste non exhaustive des prestations :
+                </p>
                 <ul class="services-list col-lg-8 row row-cols-2 p-3 mb-5 text-white shadow-lg rounded">
                     {% for service in services %}
-                    <li class="col-lg-4 p-3 p-lg-0">{{ block ("bichevronright", "config/common_block.html.twig")}} {{ service.libelle }}</li>
+                        <li class="col-lg-4 p-3 p-lg-0">
+                            {{ block ("bichevronright", "config/common_block.html.twig")}} {{ service.libelle }}
+                        </li>
                     {% endfor %}
-
                 </ul>
             </div>
         </section>
-    </div>
+    </main>
 </body>
 
 {% endblock %}

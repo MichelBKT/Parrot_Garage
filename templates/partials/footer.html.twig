@@ -1,5 +1,6 @@
 {% block body %}
-<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-2 border-top bg-dark">
+
+<footer class="row row-cols-lg-4 py-2 border-top bg-dark">
     <div class="col mb-3">
       <a href="{{path('app_home')}}" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
         <img class="bi me-2" width="200" height="80" src="{{asset('build/images/logo_complet_rect.png')}}">
@@ -8,7 +9,25 @@
     </div>
 
     <div class="col mb-3">
-
+      <h5 class="hours mb-0 text-success p-3">A propos</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="{{path('app_condition_utilisation')}}" class="nav-link p-0 text-light">
+                                     Condition d'utilisation
+                                  </a>
+        </li>
+        <li class="nav-item mb-2"><a href="{{path('app_mentions_legales')}}" class="nav-link p-0 text-light">
+                                     Mentions Légales
+                                  </a>
+        </li>
+        <li class="nav-item mb-2"><a href="{{path('app_politique_confidentialite')}}" class="nav-link p-0 text-light">
+                                     Politique de confidentialité
+                                  </a>
+        </li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">
+                                     Plan du site
+                                  </a>
+        </li>
+      </ul>
     </div>
 
     <div class="col mb-3">
@@ -19,17 +38,6 @@
         {% endfor %}
       </ul>
     </div>
-
-    <div class="col mb-3">
-      <h5 class="hours mb-0 text-success p-3">A propos</h5>
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="{{path('app_condition_utilisation')}}" class="nav-link p-0 text-light">Condition d'utilisation</a></li>
-        <li class="nav-item mb-2"><a href="{{path('app_mentions_legales')}}" class="nav-link p-0 text-light">Mentions Légales</a></li>
-        <li class="nav-item mb-2"><a href="{{path('app_politique_confidentialite')}}" class="nav-link p-0 text-light">Politique de confidentialité</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Plan du site</a></li>
-      </ul>
-    </div>
-
-  </footer>
+</footer>
 
 {% endblock %}

@@ -4,37 +4,41 @@
 
 {% block body %}
 <body class="bg-primary">
-    <div class="container">
+    <main class="container">
         <div class="row row-cols-4 justify-content-center">
-
             {% if is_granted('ROLE_ADMIN') %}
                 {% include "partials/adminNav.html.twig" %}
                     </aside>
                     </div>
+                    </div>
             {% else %} {% include "partials/userNav.html.twig" %}   
                     </aside>
                     </div> 
+                    </div>
             {% endif %}
-            <main class="col-lg-8 rounded p-2">
-                <h2 class="text-success p-3 border-bottom">Gérer les avis client</h2>
-                    {% for notice in app.flashes('notice') %}
-                        <div>
-                            {{ block ("alertSuccess", "config/common_block.html.twig") }}
-                        </div>
-                {% endfor %}
-                <div class="text-white">
-                    {{ form_start(formView)}}
+            <div class="row justify-content-center">
+                <div class="col-lg-8 rounded p-2">
+                    <h2 class="text-success p-3 border-bottom">Gérer les avis client</h2>
+                        {% for notice in app.flashes('notice') %}
+                            <div>
+                                {{ block ("alertSuccess", "config/common_block.html.twig") }}
+                            </div>
+                        {% endfor %}
+                    <div class="text-white">
+                        {{ form_start(formView)}}
 
-                        {{ form_row(formView.auteur)}}
-                        {{ form_row(formView.note)}}
-                        {{ form_row(formView.libelle)}}
-                        {{ form_row(formView.actif)}}
-                        <button type="submit" class="btn btn-success">Valider</button>
+                            {{ form_row(formView.auteur)}}
+                            {{ form_row(formView.note)}}
+                            {{ form_row(formView.libelle)}}
+                            {{ form_row(formView.actif)}}
 
-                    {{ form_end(formView) }}
-                </div>
-            </main>    
+                            <button type="submit" class="btn btn-success">Valider</button>
+
+                        {{ form_end(formView) }}
+                    </div>
+                </div>  
+            </div>  
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

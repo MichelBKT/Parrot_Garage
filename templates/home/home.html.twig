@@ -4,14 +4,13 @@
 
 {% block body %}
 <body class="bg-secondary">
-    <div class="row justify-content-center">
+    <main class="row justify-content-center">
         <h1 class="col-lg-10 my-5 p-3 text-success shadow-lg rounded">Derniers arrivages véhicules d'occasion</h1>
-    </div>
         <div class="container">
-            <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item slide-1 active " >
-                      {% for annonce in annonces|slice(-1,1) %}
+                        {% for annonce in annonces|slice(-1,1) %}
                             <img class= "d-block w-100" src="{{ asset('assets/uploads/voiture/') ~ annonce.photo}}" alt="pub1">
                         {% endfor %}  
                     </div>                
@@ -36,59 +35,60 @@
                         {% endfor %}
                     </div>
                 </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#diaporama" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#diaporama" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>  
 
-    <section class="row mt-5 justify-content-center">
+        <section class="row mt-5 justify-content-center">
 
-        <h1 class="col-lg-10 m-5 p-3 text-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
-        <div class="description col-lg-4 mt-3 p-lg-5">
-            <p class="description-welcome text-light">"Toute l'équipe est à votre disposition pour vous accompagner et vous conseiller sur l'achat d'un véhicule
-            d'occasion ou pour la réparation et l'entretien de votre véhicule. N'hésitez-pas à nous rendre visite ou nous contacter pour plus de renseignements."</p>
-        </div>
-    </section>
-    <div class="container-fluid">
-        <section class="row justify-content-center">
-            <div id="plan-toulouse" class="d-flex justify-content-center col-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.0511372027613!2d1.4485193765528848!3d43.60547685551555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc9998f44167%3A0x5b3ad4aa85d14018!2s25%20Rue%20de%20l&#39;Industrie%2C%2031000%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685014966761!5m2!1sfr!2sfr" 
-                        width="400" 
-                        height="300" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                </iframe>
+            <h1 class="col-lg-10 m-5 p-3 text-success shadow-lg rounded">Bienvenue sur le site du Garage V. PARROT</h1>
+            <div class="description col-lg-4 mt-3 p-lg-5">
+                <p class="description-welcome text-light">"Toute l'équipe est à votre disposition pour vous accompagner et vous 
+                    conseiller sur l'achat d'un véhicule d'occasion ou pour la réparation et l'entretien de votre véhicule. N'hésitez-pas 
+                    à nous rendre visite ou nous contacter pour plus de renseignements."
+                </p>
             </div>
         </section>
-        <section class="container d-flex">
-            <div class="address text-light row justify-content-center">
-                <div class="col-12 p-3">
-                    <p>TOULOUSE</p>
+        <div class="container-fluid">
+            <section class="row justify-content-center">
+                <div id="plan-toulouse" class="d-flex justify-content-center col-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.0511372027613!2d1.4485193765528848!3d43.60547685551555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebc9998f44167%3A0x5b3ad4aa85d14018!2s25%20Rue%20de%20l&#39;Industrie%2C%2031000%20Toulouse!5e0!3m2!1sfr!2sfr!4v1685014966761!5m2!1sfr!2sfr" 
+                            width="400" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <div class="col-2 p-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                        width="32" 
-                        height="32" 
-                        fill="currentColor" 
-                        class="bi bi-geo-alt-fill text-light" 
-                        viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-                    </svg>
-                </div>
-                <div class="col-10 p-3">
-                    <span>
-                        <p class="address-text ">25 rue de l'industrie</br>31000 TOULOUSE</p>
-                    </span>
-                </div>
+            </section>
+            <section class="container d-flex">
+                <div class="address text-light row justify-content-center">
+                    <div class="col-12 p-3">
+                        <p>TOULOUSE</p>
+                    </div>
+                    <div class="col-2 p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                            width="32" 
+                            height="32" 
+                            fill="currentColor" 
+                            class="bi bi-geo-alt-fill text-light" 
+                            viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </div>
+                    <div class="col-10 p-3">
+                        <span>
+                            <p class="address-text ">25 rue de l'industrie</br>31000 TOULOUSE</p>
+                        </span>
+                    </div>
                     <div class="col-2">
                         <svg xmlns="http://www.w3.org/2000/svg" 
                             width="32" 
@@ -103,58 +103,79 @@
                         <span>
                             <a href="tel:0383838282" class="phone-number text-light ">03 83 83 82 82</a>
                         </span>
-                    </div>
-                       
-            </div>
-        </section>
-        <section class="row justify-content-center">
-            <h1 class="col-lg-10 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos services</h1>
-            <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid w-25 mb-5" alt="illustration_services">
-            <p class="services col-10 p-3 text-white text-center shadow-lg rounded">
-                {{ block ("bichevronright", "config/common_block.html.twig")}} VEHICULES D'OCCASIONS {{ block ("bichevronleft", "config/common_block.html.twig")}} </br></br>
-                Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. Consultez nos annonces en ligne.</br></br>
-                {{ block ("bichevronright", "config/common_block.html.twig")}} RENDEZ-VOUS ATELIER {{ block ("bichevronleft", "config/common_block.html.twig")}}</br></br>
-                Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien ou de devis.
-            </p>
-        </section>
-        <section class="container-fluid">
-            <div class="customers-comments row justify-content-center mb-5">
-                <h2 class="col-lg-6  bg-success shadow-lg rounded my-5 mt-5 ">Avis clients</h2>
-                {% for avisClient in avisClients %}
-                {% if avisClient.actif  == false %}
-                {% else %}     
-                    
-                <div class="col-lg-8 text-white">Avis posté par : {{ avisClient.auteur }} 
-                    {% if avisClient.note == 5 %} 
-                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
-                        {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
-                        </div>
-                    {% endif %}
-                    {% if avisClient.note == 4 %}
-                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
-                        {{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
-                        </div>
-                    {% endif %}
-                    {% if avisClient.note == 3 %}
-                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
-                        {{ block ("starFill","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
-                    {% endif %}
-                    {% if avisClient.note == 2 %}
-                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("starFill","config/common_block.html.twig") }}
-                        {{ block ("star","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
-                    {% endif %}
-                    {% if avisClient.note == 1 %}
-                        <div class="text-success">{{ block ("starFill","config/common_block.html.twig") }} {{ block ("star","config/common_block.html.twig") }}
-                        {{ block ("star","config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }} {{block ("star", "config/common_block.html.twig") }}
-                    {% endif %}
-                        <div class="col-8 text-white fst-italic"> {{ avisClient.libelle }}</div></br>    
+                    </div>     
                 </div>
-                    {% endif %}
+            </section>
+            <section class="row justify-content-center">
+                <h1 class="col-lg-10 mt-3 p-3 text-success shadow-lg rounded mb-5">Nos services</h1>
+                <img src="{{ asset('build/images/clé_molette.webp')}}" class="img-fluid w-25 mb-5" alt="illustration_services">
+                <p class="services col-10 p-3 text-white text-center shadow-lg rounded">
+                    {{ block ("bichevronright", "config/common_block.html.twig")}} VEHICULES D'OCCASIONS 
+                    {{ block ("bichevronleft", "config/common_block.html.twig")}} </br></br>
+                    Prenez rendez-vous avec un de nos conseillers par téléphone pour toute informations, devis, financements, achat. 
+                    Consultez nos annonces en ligne.</br></br>
+                    {{ block ("bichevronright", "config/common_block.html.twig")}} RENDEZ-VOUS ATELIER 
+                    {{ block ("bichevronleft", "config/common_block.html.twig")}}</br></br>
+                    Prenez rendez-vous avec le conseiller d'accueil par téléphone pour toutes demandes de réparation ou d'entretien 
+                    ou de devis.
+                </p>
+            </section>
+            <section class="container-fluid">
+                <div class="customers-comments row justify-content-center mb-5">
+                    <h2 class="col-lg-6  bg-success shadow-lg rounded my-5 mt-5 ">Avis clients</h2>
+                    {% for avisClient in avisClients %}
+                        {% if avisClient.actif  == false %}
+                            {% else %}     
+                                <div class="col-lg-8 text-white">Avis posté par : {{ avisClient.auteur }} 
+                                    {% if avisClient.note == 5 %} 
+                                        <div class="text-success">
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }}
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }}
+                                        </div>
+                                    {% endif %}
+                                    {% if avisClient.note == 4 %}
+                                        <div class="text-success">
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }}
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }}
+                                        </div>
+                                    {% endif %}
+                                    {% if avisClient.note == 3 %}
+                                        <div class="text-success">
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }}
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }}
+                                    {% endif %}
+                                    {% if avisClient.note == 2 %}
+                                        <div class="text-success">
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("starFill","config/common_block.html.twig") }}
+                                            {{ block ("star","config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }}
+                                    {% endif %}
+                                    {% if avisClient.note == 1 %}
+                                        <div class="text-success">
+                                            {{ block ("starFill","config/common_block.html.twig") }} 
+                                            {{ block ("star","config/common_block.html.twig") }}
+                                            {{ block ("star","config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }} 
+                                            {{block ("star", "config/common_block.html.twig") }}
+                                    {% endif %}
+                                        <div class="col-8 text-white fst-italic"> {{ avisClient.libelle }} </div></br>    
+                            {% endif %}
                     {% endfor %}
-                
-                <a href="{{path('app_comment_new')}}" class="btn btn-success">Poster un avis</a>
-            </div>
-        </section>
-    </div>
+                    <a href="{{path('app_comment_new')}}" class="btn btn-success">Poster un avis</a>
+                </div>
+            </section>
+        </div>
+    </main>
 </body>
 {% endblock %}

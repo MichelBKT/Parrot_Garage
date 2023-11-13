@@ -4,22 +4,26 @@
 
 {% block body %}
 <body class="bg-secondary">
-    <div class="row my-5 mx-5">
+    <main class="row my-5 mx-5">
         <h2 class="text-success p-3">Poster un commentaire sur votre garage Parrot</h2>
-         {% for notice in app.flashes('notice') %}
+        {% for notice in app.flashes('notice') %}
             <div>
                 {{ block ("alertSuccess", "config/common_block.html.twig") }}
             </div>
-         {% endfor %}
+        {% endfor %}
         <div class="text-white">
             {{ form_start(formView)}}
+
                 {{ form_row(formView.auteur) }}
                 {{ form_row(formView.note) }}
                 {{ form_row(formView.libelle) }}
+
                 <button type="submit" class="btn btn-outline-info p-2 mt-3">Envoyer</button>
+
                 <a class="btn btn-outline-success p-2 mt-3" href="{{path('app_home')}}">Retour</a>
+                
             {{ form_end(formView) }}
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

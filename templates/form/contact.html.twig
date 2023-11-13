@@ -4,7 +4,7 @@
 
 {% block body %}
 <body class="bg-secondary">
-    <div class="row my-5 mx-5 justify-content-center">
+    <main class="row my-5 mx-5 justify-content-center">
         <h2 class="text-success p-3 my-5 shadow-lg col-8">Formulaire de contact</h2>
         {% for notice in app.flashes('notice') %}
             <div>
@@ -13,6 +13,7 @@
         {% endfor %}
         <div class="row row-cols-10 col-lg-8 justify-content-center">
             {{ form_start(formView) }}
+
                 <div class="formu-contact col-lg-2">
                     {{ form_row(formView.titre) }}
                 </div>
@@ -37,8 +38,9 @@
                     {{ form_row(formView.sujet) }}
                     <button type="submit" class="btn btn-outline-info p-2 mt-3">Envoyer</button>
                     <a class="btn btn-outline-success p-2 mt-3" href="{{path('app_home')}}">Retour</a>
-        {{ form_end(formView) }}
+
+            {{ form_end(formView) }}
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

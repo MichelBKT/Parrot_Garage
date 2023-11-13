@@ -4,7 +4,7 @@
 
 {% block body %}
 <body class="bg-primary">
-    <div class="container">
+    <main class="container">
         <div class="row row-cols-4 justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
                 {% include "partials/adminNav.html.twig" %}
@@ -15,33 +15,31 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 rounded p-2">
                     <h2 class="text-success p-3 border-bottom">Liste des utilisateurs</h2>
-                        <div class="table-responsive-md mt-5 justify-content-center">
-                            <table class="table table-bordered text-white">
-                                <thead>
+                    <div class="table-responsive-md mt-5 justify-content-center">
+                        <table class="table table-bordered text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-success bg-secondary">Nom</th>
+                                    <th scope="col" class="text-success bg-secondary">Prénom</th>
+                                    <th scope="col" class="text-success bg-secondary">Email</th>
+                                    <th scope="col" class="text-success bg-secondary">Poste</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
                                     <tr>
-                                        <th scope="col" class="text-success bg-secondary">Identifiant</th>
-                                        <th scope="col" class="text-success bg-secondary">Nom</th>
-                                        <th scope="col" class="text-success bg-secondary">Prénom</th>
-                                        <th scope="col" class="text-success bg-secondary">Email</th>
-                                        <th scope="col" class="text-success bg-secondary">Poste</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for user in users %}
-                                    <tr>
-                                        <td>{{ user.id }}</td>
                                         <td>{{ user.nom }}</td>
                                         <td>{{ user.prenom }}</td>
                                         <td>{{ user.email }}</td>
                                         <td>{{ user.poste.libelle }}</td>
                                     </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>    
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

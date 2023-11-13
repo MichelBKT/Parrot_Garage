@@ -4,39 +4,44 @@
 
 {% block body %}
 <body class="bg-primary">
-    <div class="container">
+    <main class="container">
         <div class="row row-cols-4 justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
                 {% include "partials/adminNav.html.twig" %}
                 </aside>
                 </div>
+                </div>
             {% else %} {% include "partials/userNav.html.twig" %}   
                         </aside>
+                        </div>
                         </div> 
             {% endif %}
-            <main class="col-lg-8 rounded p-2">
-                <h2 class="text-success p-3 border-bottom">Liste des annonces</h2>
-                 <div class="table-responsive-md mt-5">
-                <table class="table table-bordered text-white">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-success bg-secondary">Titre</th>
-                            <th scope="col" class="text-success bg-secondary">Prix</th>
-                            <th scope="col" class="text-success bg-secondary">Date de mise en ligne</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for annonce in annonces %}
-                        <tr>
-                            <td>{{ annonce.titre }}</td>
-                            <td>{{ annonce.prix }}€</td>
-                            <td>{{ annonce.createdAt |date('d/m/Y') }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </main>    
+            <div class="row justify-content-center">
+                <div class="col-lg-8 rounded p-2">
+                    <h2 class="text-success p-3 border-bottom">Liste des annonces</h2>
+                    <div class="table-responsive-md mt-5">
+                        <table class="table table-bordered text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-success bg-secondary">Titre</th>
+                                    <th scope="col" class="text-success bg-secondary">Prix</th>
+                                    <th scope="col" class="text-success bg-secondary">Date de mise en ligne</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for annonce in annonces %}
+                                    <tr>
+                                        <td>{{ annonce.titre }}</td>
+                                        <td>{{ annonce.prix }}€</td>
+                                        <td>{{ annonce.createdAt |date('d/m/Y') }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>    
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

@@ -4,39 +4,44 @@
 
 {% block body %}
 <body class="bg-primary">
-    <div class="container">
+    <main class="container">
         <div class="row row-cols-4 justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
                 {% include "partials/adminNav.html.twig" %}
                 </aside>
                 </div>
+                </div>
             {% else %} {% include "partials/userNav.html.twig" %}   
                         </aside>
                         </div> 
+                        </div>
             {% endif %}
-            <main class="col-lg-8 rounded p-2">
-                <h2 class="text-success p-3 border-bottom">Liste des avis client</h2>
-                 <div class="table-responsive-md mt-5">
-                <table class="table table-bordered text-white">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="bg-secondary text-success">Auteur</th>
-                            <th scope="col" class="bg-secondary text-success">Commentaire</th>
-                            <th scope="col" class="bg-secondary text-success">Note</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for avisClient in avisClients %}
-                        <tr>
-                            <td>{{ avisClient.auteur }}</td>
-                            <td>{{ avisClient.libelle }}</td>
-                            <td>{{ avisClient.note }}/5</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </main>    
+            <div class="row justify-content-center">
+                <div class="col-lg-8 rounded p-2">
+                    <h2 class="text-success p-3 border-bottom">Liste des avis client</h2>
+                    <div class="table-responsive-md mt-5">
+                        <table class="table table-bordered text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="bg-secondary text-success">Auteur</th>
+                                    <th scope="col" class="bg-secondary text-success">Commentaire</th>
+                                    <th scope="col" class="bg-secondary text-success">Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for avisClient in avisClients %}
+                                    <tr>
+                                        <td>{{ avisClient.auteur }}</td>
+                                        <td>{{ avisClient.libelle }}</td>
+                                        <td>{{ avisClient.note }}/5</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>    
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}

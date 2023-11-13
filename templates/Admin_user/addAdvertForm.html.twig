@@ -4,46 +4,52 @@
 
 {% block body %}
 <body class="bg-primary">
-    <div class="container">
+    <main class="container">
         <div class="row row-cols-4 justify-content-center">
             {% if is_granted('ROLE_ADMIN') %}
                 {% include "partials/adminNav.html.twig" %}
                 </aside>
                 </div>
+                </div>
             {% else %} {% include "partials/userNav.html.twig" %}
                         </aside>
+                        </div>
                         </div>   
             {% endif %}
-            <main class="col-lg-8 rounded p-2">
-                {% if app.request.attributes.get('_route') == 'user_car_ad_edit' %}
-                <h2 class="text-success p-3 border-bottom">Modifier l'annonce</h2> 
-                {% else %}               
-                <h2 class="text-success p-3 border-bottom">Ajouter une annonce</h2>
-                {% endif %}
-                {% for notice in app.flashes('notice') %}
-                    <div>
-                        {{ block ("alertSuccess", "config/common_block.html.twig") }}
-                    </div>
-                {% endfor %}
-                <div class="text-white">
-                 {{ form_start(formView) }}
-                        {{ form_row(formView.titre) }}
-                        {{ form_row(formView.prix) }}
-                        {{ form_row(formView.ct_ok) }}
-                        {{ form_row(formView.kilometrage) }}
-                        {{ form_row(formView.Boite_vitesse_manuelle) }}
-                        {{ form_row(formView.nombre_de_portes_5) }}
-                        {{ form_row(formView.puissance_fiscale) }}
-                        {{ form_row(formView.emission_CO2) }}
-                        {{ form_row(formView.photo) }}
-                        {{ form_row(formView.created_at)}}
-                        {{ form_row(formView.user) }}
-                        <button type="submit" class="btn btn-success">Valider</button>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 rounded p-2">
+                    {% if app.request.attributes.get('_route') == 'user_car_ad_edit' %}
+                        <h2 class="text-success p-3 border-bottom">Modifier l'annonce</h2> 
+                    {% else %}               
+                        <h2 class="text-success p-3 border-bottom">Ajouter une annonce</h2>
+                    {% endif %}
+                    {% for notice in app.flashes('notice') %}
+                        <div>
+                            {{ block ("alertSuccess", "config/common_block.html.twig") }}
+                        </div>
+                    {% endfor %}
+                    <div class="text-white">
+                        {{ form_start(formView) }}
 
-                    {{ form_end(formView) }}
+                            {{ form_row(formView.titre) }}
+                            {{ form_row(formView.prix) }}
+                            {{ form_row(formView.ct_ok) }}
+                            {{ form_row(formView.kilometrage) }}
+                            {{ form_row(formView.Boite_vitesse_manuelle) }}
+                            {{ form_row(formView.nombre_de_portes_5) }}
+                            {{ form_row(formView.puissance_fiscale) }}
+                            {{ form_row(formView.emission_CO2) }}
+                            {{ form_row(formView.photo) }}
+                            {{ form_row(formView.created_at)}}
+                            {{ form_row(formView.user) }}
+
+                            <button type="submit" class="btn btn-success">Valider</button>
+
+                        {{ form_end(formView) }}
+                    </div>
                 </div>
-            </main>    
+            </div>    
         </div>
-    </div>
+    </main>
 </body>
 {% endblock %}
